@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
+using CodeMonkey.Utils;
 
 
 public class LifeSystem : MonoBehaviour
@@ -55,7 +56,14 @@ public class LifeSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        HealthBarColor();
+        health = Mathf.Clamp(health, 0, playerHealth);
+        UpdateHealthUI();
+        if (health <= 0 && !isDied)
+        {
+            Die();
+        }
+        Invulnerability();
     }
 
     public void HurtPlayer(int playerDamaged)
@@ -63,10 +71,87 @@ public class LifeSystem : MonoBehaviour
         if (invincibilityCounter <= 0)
         {
             health -= playerDamaged;
+            lerpTimer = 0f;
             invincibilityCounter = invincibilityLength;
             PlayerBody.material.color = DamageSkinColor;
             Physics.IgnoreLayerCollision(10, 11, true);
             flashCounter = flashLength;
+        }
+    }
+
+    private void HealthBarColor()
+    {
+        if (health <= 10 && health >= 6)
+        {
+            frontHealth.color = UtilsClass.GetColorFromString("2BFF00");
+        }
+
+        if (health <= 5 && health >= 3)
+        {
+            frontHealth.color = UtilsClass.GetColorFromString("FFE312");
+        }
+
+        if (health <= 2 && health >= 0)
+        {
+            frontHealth.color = UtilsClass.GetColorFromString("FF2613");
+        }
+
+    }
+    public void UpdateHealthUI()
+    {
+        float fillF = frontHealth.fillAmount;
+        float fillB = backHealth.fillAmount;
+        float hFraction = health / playerHealth;
+        if (fillB > hFraction)
+        {
+            frontHealth.fillAmount = hFraction;
+            backHealth.color = DamageHealthColor;
+            lerpTimer += Time.deltaTime;
+            float percentComplete = lerpTimer / chipSpeed;
+            percentComplete = percentComplete * percentComplete;
+            backHealth.fillAmount = Mathf.Lerp(fillB, hFraction, percentComplete);
+        }
+        if (fillF < hFraction)
+        {
+            backHealth.color = Color.white;
+            backHealth.fillAmount = hFraction;
+            lerpTimer += Time.deltaTime;
+            float percentComplete = lerpTimer / chipSpeed;
+            percentComplete = percentComplete * percentComplete;
+            frontHealth.fillAmount = Mathf.Lerp(fillF, backHealth.fillAmount, percentComplete);
+        }
+    }
+    private void Die()
+    {
+        isDied = true;
+        Destroy(transform.gameObject);
+    }
+    private void Invulnerability()
+    {
+        if (invincibilityCounter > 0)
+        {
+            invincibilityCounter -= Time.deltaTime;
+
+            flashCounter -= Time.deltaTime;
+            if (flashCounter <= 0)
+            {
+                for (int i = 0; i < playerParts.Length; i++)
+                {
+                    playerParts[i].enabled = !playerParts[i].enabled;
+                }
+
+                flashCounter = flashLength;
+            }
+            if (invincibilityCounter <= 0)
+            {
+                for (int i = 0; i < playerParts.Length; i++)
+                {
+
+                    playerParts[i].enabled = true;
+                }
+                PlayerBody.material.color = defaultSkinColor;
+                Physics.IgnoreLayerCollision(10, 11, false);
+            }
         }
     }
 }
