@@ -9,13 +9,14 @@ using UnityEngine.Playables;
 using CodeMonkey.Utils;
 
 
-public class LifeSystem : MonoBehaviour
+public class LifeSystem : MonoBehaviour, IDataPersistence
 {
     private bool isDied = false;
     [Header("Player Health")]
     public float health;
     public float playerHealth = 10;
     public static bool isAlive = true;
+    private int playerLifes = 0;
 
     [Header("Invincibility parameters")]
     public float invincibilityLength;
@@ -38,22 +39,31 @@ public class LifeSystem : MonoBehaviour
     private float flashCounter = 0.1f;
     private Color32 defaultSkinColor = new Color32(255, 255, 255, 255);
     private Color32 DamageSkinColor = new Color32(255, 175, 175, 255);
+    private bool noLifes;
 
     public static LifeSystem Instance { get; private set; }
-
+   
     private void Awake()
     {
+        //SaveSystem.Instance.Load();
         isAlive = true;
         health = playerHealth;
         Instance = this;             
     }
-    // Start is called before the first frame update
-    void Start()
+    public void LoadData(GameData data)
     {
-        isAlive = true;
+        this.playerLifes = data.lifes;
     }
 
-    // Update is called once per frame
+    public void SaveData(ref GameData data)
+    {
+        data.lifes = this.playerLifes;
+    }
+    void Start()
+    {
+        DataPersistenceManager.instance.LoadGame();
+        isAlive = true;
+    }
     void Update()
     {
         HealthBarColor();
@@ -61,6 +71,10 @@ public class LifeSystem : MonoBehaviour
         UpdateHealthUI();
         if (health <= 0 && !isDied)
         {
+            /*if (!noLifes)
+            {
+                //RestLifes();
+            }*/
             Die();
         }
         Invulnerability();
@@ -154,4 +168,12 @@ public class LifeSystem : MonoBehaviour
             }
         }
     }
+    /*private void RestLifes()
+    {
+        DataPersistenceManager.instance.SaveGame();
+        if (SaveSystem.Instance.PlayerInfo.lifes == 0)
+        {
+            noLifes = true;
+        }
+    }*/
 }
