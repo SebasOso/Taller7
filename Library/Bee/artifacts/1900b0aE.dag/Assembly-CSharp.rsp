@@ -363,6 +363,7 @@
 "Assets/Invector-3rdPersonController_LITE/Scripts/Generic/Utils/vComment.cs"
 "Assets/Invector-3rdPersonController_LITE/Scripts/Generic/Utils/vExtensions.cs"
 "Assets/Invector-3rdPersonController_LITE/Scripts/Generic/Utils/vPickupItem.cs"
+"Assets/Scripts/Movement/ladderscript.cs"
 -langversion:9.0
 
 /deterministic
