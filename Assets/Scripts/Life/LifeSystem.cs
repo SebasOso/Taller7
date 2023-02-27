@@ -40,9 +40,8 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private Color32 defaultSkinColor = new Color32(255, 255, 255, 255);
     private Color32 DamageSkinColor = new Color32(255, 175, 175, 255);
     private bool noLifes;
-
+    [SerializeField] private TextMeshProUGUI lifes;
     public static LifeSystem Instance { get; private set; }
-   
     private void Awake()
     {
         //SaveSystem.Instance.Load();
@@ -50,22 +49,14 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
         health = playerHealth;
         Instance = this;             
     }
-    public void LoadData(GameData data)
-    {
-        this.playerLifes = data.lifes;
-    }
 
-    public void SaveData(ref GameData data)
-    {
-        data.lifes = this.playerLifes;
-    }
     void Start()
     {
-        DataPersistenceManager.instance.LoadGame();
         isAlive = true;
     }
     void Update()
     {
+        lifes.text = "" + playerLifes;
         HealthBarColor();
         health = Mathf.Clamp(health, 0, playerHealth);
         UpdateHealthUI();
@@ -188,12 +179,15 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
             }
         }
     }
-    /*private void RestLifes()
+
+    public void LoadData(GameData data)
     {
-        DataPersistenceManager.instance.SaveGame();
-        if (SaveSystem.Instance.PlayerInfo.lifes == 0)
-        {
-            noLifes = true;
-        }
-    }*/
+        this.playerLifes = data.lifes;
+        this.transform.position = data.playerPosition;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.lifes = this.playerLifes;
+    }
 }
