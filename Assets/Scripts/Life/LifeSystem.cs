@@ -71,13 +71,33 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
         UpdateHealthUI();
         if (health <= 0 && !isDied)
         {
-            /*if (!noLifes)
+            if (noLifes == true)
             {
-                //RestLifes();
-            }*/
-            Die();
+                Die();
+            }
+            else
+            {
+                RestLifes();
+                health = 10;
+            }
         }
         Invulnerability();
+    }
+    public void AddLifes()
+    {
+        this.playerLifes++;
+    }
+    private void RestLifes()
+    {
+        if (this.playerLifes > 0)
+        {
+            this.playerLifes--;
+        }
+        if (this.playerLifes <=0)
+        {
+            this.playerLifes = 0;
+            noLifes = true;
+        }
     }
 
     public void HurtPlayer(int playerDamaged)

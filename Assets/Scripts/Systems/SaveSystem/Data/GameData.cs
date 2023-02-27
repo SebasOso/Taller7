@@ -9,6 +9,6 @@ public class GameData
     public int lifes;
     public GameData()
     {
-        this.lifes = 0;
+        this.lifes = 5;
     }
 }
