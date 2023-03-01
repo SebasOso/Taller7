@@ -6,6 +6,9 @@ TagManager:
   tags:
   - hielo
   - ladder
+  - CinemachineTarget
+  - escalable
+  - trampoline
   layers:
   - Default
   - TransparentFX
