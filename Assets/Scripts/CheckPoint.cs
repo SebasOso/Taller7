@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour, IDataPersistence
+public class CheckPoint : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private string id;
 
@@ -34,7 +34,6 @@ public class Coin : MonoBehaviour, IDataPersistence
         if (collected)
         {
             data.playerPosition = this.transform.position;
-
         }
     }
 
