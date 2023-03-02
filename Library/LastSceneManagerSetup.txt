@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/controller demo.unity
+- path: Assets/Scenes/Jugador.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
