@@ -53,22 +53,10 @@
     <UnityVersion>2021.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\Scripts\CharacterController\vThirdPersonMotor.cs" />
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\3D Models\Others\HealthItem\vAnimateUV.cs" />
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\Scripts\Generic\Utils\vComment.cs" />
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\Scripts\CharacterController\vThirdPersonAnimator.cs" />
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\Scripts\CharacterController\vThirdPersonInput.cs" />
     <Compile Include="Assets\Scripts\Movement\ladderscript.cs" />
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\Scripts\Generic\Utils\vPickupItem.cs" />
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\Scripts\CharacterController\vThirdPersonController.cs" />
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\Scripts\Generic\Utils\vExtensions.cs" />
-    <Compile Include="Assets\Invector-3rdPersonController_LITE\Scripts\Camera\vThirdPersonCamera.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Invector-3rdPersonController_LITE\README_Basic.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -731,9 +719,6 @@
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
     </Reference>
@@ -742,9 +727,6 @@
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
@@ -781,6 +763,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{3FD43777-83BB-B024-23FA-D53C5D1C8C8C}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{7D3587FB-414D-0615-00BE-A3D3D04F0ABA}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
