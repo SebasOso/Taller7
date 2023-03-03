@@ -8,6 +8,7 @@ public class Jugador : MonoBehaviour
     public Rigidbody rb;
     public float speed = 5f;
     public float rotationSpeed = 50f;
+    public SpawnEnemy spawnEnemy;
 
     // Update is called once per frame
     void Update()
@@ -28,5 +29,12 @@ public class Jugador : MonoBehaviour
         if (movementDirection != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), rotationSpeed * Time.deltaTime);
 
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "CombatZone")
+        {
+            spawnEnemy.Spawn();
 
+        }
+    }
 }

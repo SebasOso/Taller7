@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hielo
   - ladder
+  - CombatZone
   layers:
   - Default
   - TransparentFX
