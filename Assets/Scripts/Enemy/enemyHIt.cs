@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyHIt : MonoBehaviour
+public class EnemyHit : MonoBehaviour
 {
     public int valor;
-    [SerializeField]
-    private GameObject obj;
+    [SerializeField] private GameObject obj;
+    [SerializeField ]private GameObject healthBar;
     Material material;
-    // Start is called before the first frame update
     void Start()
     {
         valor = 0;
@@ -19,27 +18,28 @@ public class enemyHIt : MonoBehaviour
     {
         if (valor == 0)
         {
-            material = obj.GetComponent<Renderer>().material;
+            material = healthBar.GetComponent<Renderer>().material;
             material.color = Color.green;
         }
         if (valor==1)
         {
-            material = obj.GetComponent<Renderer>().material;
+            material = healthBar.GetComponent<Renderer>().material;
             material.color = Color.yellow;
         }
         if (valor == 2)
         {
-            material = obj.GetComponent<Renderer>().material;
+            material = healthBar.GetComponent<Renderer>().material;
             material.color = Color.red;
         }
         if (valor == 3)
         {
+            Destroy(healthBar);
             Destroy(obj);
         }
 
     }
 
-    public void incrementarvalor()
+    public void IncrementarValor()
     {
         valor++;
     }

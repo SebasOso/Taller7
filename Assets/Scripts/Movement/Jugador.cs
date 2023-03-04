@@ -14,6 +14,9 @@ public class Jugador : MonoBehaviour
     public float speed = 5f;
     public float rotationSpeed = 50f;
     public Rigidbody rb;
+    public float damage = 10f;
+    public float attackRange = 2f;
+    public float attackRadius = 0.5f;
 
 
     private bool isGrounded = true;
@@ -87,22 +90,15 @@ public class Jugador : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider collision)
-    
-   
+    private void OnTriggerStay(Collider enemy)
     {
-        if (collision.gameObject.tag == "enemy")
+        if (enemy.CompareTag("Enemy"))
         {
+            Debug.Log("AAAAAAAAAA");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                collision.gameObject.GetComponent<enemyHIt>().incrementarvalor();
-
+                enemy.gameObject.GetComponent<EnemyHit>().IncrementarValor();
             }
         }
     }
-
-   
-
-
-
 }
