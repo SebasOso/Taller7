@@ -86,4 +86,23 @@ public class Jugador : MonoBehaviour
             jumpDelayTimer -= Time.deltaTime;
         }
     }
+
+    private void OnTriggerStay(Collider collision)
+    
+   
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                collision.gameObject.GetComponent<enemyHIt>().incrementarvalor();
+
+            }
+        }
+    }
+
+   
+
+
+
 }
