@@ -90,7 +90,7 @@ public class Jugador : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider enemy)
+    /*private void OnTriggerStay(Collider enemy)
     {
         if (enemy.CompareTag("Enemy"))
         {
@@ -100,5 +100,5 @@ public class Jugador : MonoBehaviour
                 enemy.gameObject.GetComponent<EnemyHit>().IncrementarValor();
             }
         }
-    }
+    }*/
 }

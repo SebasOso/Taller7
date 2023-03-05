@@ -37,7 +37,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     public Renderer PlayerBody;
     public float flashLength;
     private float flashCounter = 0.1f;
-    private Color32 defaultSkinColor = new Color32(255, 255, 255, 255);
+    [SerializeField]private Color32 defaultSkinColor = new Color32(255, 255, 255, 255);
     private Color32 DamageSkinColor = new Color32(255, 175, 175, 255);
     private bool noLifes;
     [SerializeField] private TextMeshProUGUI lifes;
