@@ -183,7 +183,11 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.playerLifes = data.lifes;
-        this.transform.position = data.playerPosition;
+        if (data.checkPositions.Count > 0)
+        {
+            Vector3 lastCheckPosition = data.checkPositions[data.checkPositions.Count - 1];
+            this.transform.position = lastCheckPosition;
+        }
     }
 
     public void SaveData(GameData data)
