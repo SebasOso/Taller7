@@ -8,6 +8,7 @@ TagManager:
   - ladder
   - CombatZone
   - Enemy
+  - climb
   layers:
   - Default
   - TransparentFX
