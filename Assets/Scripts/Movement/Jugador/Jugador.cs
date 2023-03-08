@@ -90,15 +90,5 @@ public class Jugador : MonoBehaviour
         }
     }
 
-    /*private void OnTriggerStay(Collider enemy)
-    {
-        if (enemy.CompareTag("Enemy"))
-        {
-            Debug.Log("AAAAAAAAAA");
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                enemy.gameObject.GetComponent<EnemyHit>().IncrementarValor();
-            }
-        }
-    }*/
+   
 }
