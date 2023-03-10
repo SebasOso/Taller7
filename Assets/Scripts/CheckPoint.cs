@@ -26,6 +26,7 @@ public class CheckPoint : MonoBehaviour, IDataPersistence
         {
             Debug.Log("TRIGER");
             collected = true;
+            DataPersistenceManager.instance.SaveGame();
         }
     }
 }
