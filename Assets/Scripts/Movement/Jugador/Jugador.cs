@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Cinemachine;
+
 
 public class Jugador : MonoBehaviour
 {
@@ -31,6 +33,7 @@ public class Jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         JumpSystem();
 
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -48,8 +51,11 @@ public class Jugador : MonoBehaviour
             OnPlayerMove.Invoke(); 
             transform.hasChanged = false; 
         }
+        
 
     }
+    
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "CombatZone" && !enemySpawn)
@@ -89,6 +95,5 @@ public class Jugador : MonoBehaviour
             jumpDelayTimer -= Time.deltaTime;
         }
     }
-
-   
+ 
 }
