@@ -8,6 +8,7 @@ TagManager:
   - ladder
   - CombatZone
   - Enemy
+  - EnemyRangeHint
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - EnemyBullet
   - Enemy
   - Ground
-  - 
+  - Player
   - 
   - 
   - 

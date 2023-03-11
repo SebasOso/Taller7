@@ -15,6 +15,7 @@ public class Jugador : MonoBehaviour
     public float rotationSpeed = 50f;
     public Rigidbody rb;
     public float damage = 10f;
+    public float stayDamage = 20f;
     public float attackRange = 2f;
     public float attackRadius = 0.5f;
 
@@ -28,13 +29,27 @@ public class Jugador : MonoBehaviour
     public SpawnEnemy spawnEnemy;
     public UnityEvent OnPlayerMove;
     private bool enemySpawn;
-    // Update is called once per frame
+    public bool isMoving;
+    public static Jugador instance { get; private set; }
+    private void Awake()
+    {
+        instance = this;
+    }
     void Update()
     {
         JumpSystem();
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        isMoving = horizontalInput != 0 || verticalInput != 0;
+        if (isMoving)
+        {
+            Debug.Log("Player start to move");
+        }
+        else if(!isMoving)
+        {
+            Debug.Log("Player stop moving");
+        }
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         movementDirection.Normalize();

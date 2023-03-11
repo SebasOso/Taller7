@@ -214,7 +214,14 @@ MonoBehaviour:
   retreat_distance: 5
   stop_distance: 10
   speed: 1
-  startTimeBetweenShots: 3.5
+  damageDelay: 3
+  startTimeBetweenShots: 0.1
+  radio: 20
+  playerDetected: 0
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  EnemyRangeHint: {fileID: 5322167476317191429, guid: e5eeb9db48a45334d8308835756a5797, type: 3}
 --- !u!114 &5741005932239753372
 MonoBehaviour:
   m_ObjectHideFlags: 0

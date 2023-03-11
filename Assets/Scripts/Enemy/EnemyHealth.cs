@@ -8,6 +8,11 @@ public class EnemyHealth : MonoBehaviour
     public float health = 100f;
     [SerializeField] private GameObject healthBar;
     private Renderer healthBarMaterial;
+    public EnemyHealth instance { get; private set; }
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         healthBarMaterial = healthBar.GetComponent<Renderer>();
