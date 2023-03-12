@@ -64,6 +64,7 @@
     <Compile Include="Assets\CodeMonkey\MonoBehaviours\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemy\SpawnEnemy.cs" />
     <Compile Include="Assets\CodeMonkey\Utils\World_Bar.cs" />
+    <Compile Include="Assets\Scripts\Movement\TimerScript.cs" />
     <Compile Include="Assets\Scripts\DataPersistence\IDataPersistence.cs" />
     <Compile Include="Assets\CodeMonkey\Utils\FunctionUpdater.cs" />
     <Compile Include="Assets\CodeMonkey\Utils\FunctionTimer.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\DataPersistence\DataPersistenceManager.cs" />
     <Compile Include="Assets\CodeMonkey\MonoBehaviours\ComponentActions.cs" />
     <Compile Include="Assets\Scripts\DataPersistence\FileDataHandler.cs" />
+    <Compile Include="Assets\Scripts\Movement\wallclimb.cs" />
     <Compile Include="Assets\Scripts\Enemy\RangeEnemy.cs" />
     <Compile Include="Assets\CodeMonkey\Utils\UI_BarMultiple.cs" />
     <Compile Include="Assets\Scripts\Movement\Plataforma.cs" />
@@ -93,8 +95,7 @@
     <Compile Include="Assets\CodeMonkey\CMDebug.cs" />
     <Compile Include="Assets\CodeMonkey\Utils\FunctionPeriodic.cs" />
     <Compile Include="Assets\Scripts\Enemy\enemyHIt.cs" />
-    <Compile Include="Assets\Scripts\Movement\wallclimb.cs" />
-    <Compile Include="Assets\Scripts\TimerScript.cs" />
+    <Compile Include="Assets\Scripts\Pausa\PausaScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
