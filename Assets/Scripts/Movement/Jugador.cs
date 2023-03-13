@@ -30,6 +30,7 @@ public class Jugador : MonoBehaviour
     public UnityEvent OnPlayerMove;
     private bool enemySpawn;
     public bool isMoving;
+    public bool enemyIsDead = false;
     public static Jugador instance { get; private set; }
     private void Awake()
     {
