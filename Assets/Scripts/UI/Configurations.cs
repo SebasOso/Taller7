@@ -14,6 +14,7 @@ public class Configurations : MonoBehaviour
     {
         Time.timeScale = 0f;
         Jugador.instance.canJump = false;
+        
     }
     public void ResumeGame()
     {
