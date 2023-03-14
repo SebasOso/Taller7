@@ -9,7 +9,7 @@ public class Level01Scene : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Level01");
+            SceneManager.LoadScene("Level01Cinematic");
         }
     }
 }
