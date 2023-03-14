@@ -11,7 +11,7 @@ public class Jugador : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public Transform groundCheck;
-    public float speed = 5f;
+    public float speed = 5;
     public float rotationSpeed = 50f;
     public Rigidbody rb;
     public float damage = 10f;
@@ -19,12 +19,11 @@ public class Jugador : MonoBehaviour
     public float attackRange = 2f;
     public float attackRadius = 0.5f;
 
-
     private bool isGrounded = true;
     private bool canDoubleJump = false;
     private float jumpDelayTimer;
-
-
+    private Vector3 cameraForward;
+    private Vector3 movementDirection;
 
     public SpawnEnemy spawnEnemy;
     public UnityEvent OnPlayerMove;
@@ -32,10 +31,13 @@ public class Jugador : MonoBehaviour
     public bool isMoving;
     public bool enemyIsDead = false;
     public static Jugador instance { get; private set; }
+    
+
     private void Awake()
     {
         instance = this;
     }
+
     void Update()
     {
         JumpSystem();
@@ -43,29 +45,44 @@ public class Jugador : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         isMoving = horizontalInput != 0 || verticalInput != 0;
+
         if (isMoving)
         {
             Debug.Log("Player start to move");
         }
-        else if(!isMoving)
+        else if (!isMoving)
         {
             Debug.Log("Player stop moving");
         }
 
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        // Get the forward direction of the camera without the vertical component
+        cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0;
+        cameraForward.Normalize();
+
+        // Calculate the movement direction based on the input and the camera direction
+        movementDirection = horizontalInput * Camera.main.transform.right.normalized + verticalInput * cameraForward.normalized;
+
         movementDirection.Normalize();
+        // Lock camera rotation on vertical axis
+       
 
         transform.position = transform.position + movementDirection * speed * Time.deltaTime;
 
-        if (movementDirection != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), rotationSpeed * Time.deltaTime);
+        if (movementDirection != Vector3.zero)
+        {
+            // Rotate the player towards the movement direction
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), rotationSpeed * Time.deltaTime);
+        }
+
 
         if (transform.hasChanged)
         {
-            OnPlayerMove.Invoke(); 
-            transform.hasChanged = false; 
+            OnPlayerMove.Invoke();
+            transform.hasChanged = false;
         }
-
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "CombatZone" && !enemySpawn)
@@ -79,6 +96,7 @@ public class Jugador : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
+
     private void JumpSystem()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -105,16 +123,4 @@ public class Jugador : MonoBehaviour
             jumpDelayTimer -= Time.deltaTime;
         }
     }
-
-    /*private void OnTriggerStay(Collider enemy)
-    {
-        if (enemy.CompareTag("Enemy"))
-        {
-            Debug.Log("AAAAAAAAAA");
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                enemy.gameObject.GetComponent<EnemyHit>().IncrementarValor();
-            }
-        }
-    }*/
 }
