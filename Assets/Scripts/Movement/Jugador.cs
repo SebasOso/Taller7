@@ -30,6 +30,7 @@ public class Jugador : MonoBehaviour
     private bool enemySpawn;
     public bool isMoving;
     public bool enemyIsDead = false;
+    public bool canJump = true;
     public static Jugador instance { get; private set; }
     
 
@@ -99,28 +100,31 @@ public class Jugador : MonoBehaviour
 
     private void JumpSystem()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded)
+        if (canJump)
         {
-            canDoubleJump = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
             if (isGrounded)
             {
-                Jump(jumpForce);
                 canDoubleJump = true;
-                jumpDelayTimer = jumpDelay;
             }
-            else if (canDoubleJump)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Jump(doubleJumpForce);
-                canDoubleJump = false;
+                if (isGrounded)
+                {
+                    Jump(jumpForce);
+                    canDoubleJump = true;
+                    jumpDelayTimer = jumpDelay;
+                }
+                else if (canDoubleJump)
+                {
+                    Jump(doubleJumpForce);
+                    canDoubleJump = false;
+                }
             }
-        }
-        if (jumpDelayTimer > 0f && !isGrounded)
-        {
-            jumpDelayTimer -= Time.deltaTime;
+            if (jumpDelayTimer > 0f && !isGrounded)
+            {
+                jumpDelayTimer -= Time.deltaTime;
+            }
         }
     }
 }

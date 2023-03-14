@@ -14,14 +14,6 @@ public class CameraOrbit : MonoBehaviour
     [SerializeField] private float limitNegative;
     [SerializeField] private float limitPositive;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    
-
     void Update()
     {
         float hor = Input.GetAxis("Mouse X");
