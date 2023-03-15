@@ -164,7 +164,7 @@ MonoBehaviour:
   stop_distance: 10
   speed: 1
   damageDelay: 3
-  startTimeBetweenShots: 0.1
+  startTimeBetweenShots: 0.8
   radio: 20
   playerDetected: 0
   playerMask:
