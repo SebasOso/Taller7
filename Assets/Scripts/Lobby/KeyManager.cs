@@ -7,7 +7,7 @@ public class KeyManager : MonoBehaviour
     [SerializeField] private GameObject key;
     void Update()
     {
-        if (Jugador.instance.enemyIsDead == true)
+        if (Player.Instance.enemyIsDead == true)
         {
             key.SetActive(true);
         }

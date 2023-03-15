@@ -58,7 +58,7 @@ public class RangeEnemy : MonoBehaviour
 
     private void Bullets()
     {
-        if (timeBetweenShots <= 0 && Jugador.instance.isMoving)
+        if (timeBetweenShots <= 0 && Player.Instance.isMoving)
         {
             Vector3 position = transform.position; 
             EnemyBulletPool.Instance.Get().transform.position = this.transform.position;
@@ -71,9 +71,9 @@ public class RangeEnemy : MonoBehaviour
     }
     private void HurtEnemyRange()
     {
-        if (!Jugador.instance.isMoving && canTakeDamage)
+        if (!Player.Instance.isMoving && canTakeDamage)
         {
-            health.TakeDamage(Jugador.instance.stayDamage);
+            health.TakeDamage(Player.Instance.stayDamage);
             canTakeDamage = false;
             StartCoroutine(ResetCanTakeDamage());
         }

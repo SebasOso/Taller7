@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            Jugador.instance.enemyIsDead = true;
+            Player.Instance.enemyIsDead = true;
             gameObject.SetActive(false);
         }
     }

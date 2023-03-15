@@ -13,13 +13,13 @@ public class Configurations : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0f;
-        Jugador.instance.canJump = false;
+        Player.Instance.canJump = false;
         
     }
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
-        Jugador.instance.canJump = true;
+        Player.Instance.canJump = true;
     }
     public void StopMusic()
     {

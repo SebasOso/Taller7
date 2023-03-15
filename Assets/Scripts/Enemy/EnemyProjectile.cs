@@ -9,14 +9,14 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] private int damage;
     private Transform player;
     private Vector3 target;
-    private Jugador playerMovement; // Referencia al script PlayerMovement
+    private Player playerMovement; // Referencia al script PlayerMovement
     private bool hasPlayerMoved; // Flag que indica si el jugador se ha movido
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = new Vector3(player.position.x, player.position.y, player.position.z);
-        playerMovement = player.GetComponent<Jugador>();
+        playerMovement = player.GetComponent<Player>();
         playerMovement.OnPlayerMove.AddListener(OnPlayerMove); // Suscribe a OnPlayerMove
     }
 
