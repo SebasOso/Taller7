@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7975358663506242695}
   - component: {fileID: 6413673321888523042}
   - component: {fileID: 9143721964223879144}
-  m_Layer: 0
+  - component: {fileID: 8269213028247546487}
+  m_Layer: 8
   m_Name: Post it
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7342550600568010301}
-  m_LocalRotation: {x: 0.5918981, y: -0.36481506, z: -0.38685483, w: 0.60573095}
+  m_LocalRotation: {x: 0.59189785, y: -0.36481082, z: -0.3868552, w: 0.6057335}
   m_LocalPosition: {x: -0.052997828, y: 0.03413534, z: 0.026860714}
-  m_LocalScale: {x: 34.6313, y: 34.63131, z: 34.631306}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 296.66736, y: 296.66736, z: 296.66736}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25.773, y: -87.891, z: -90}
 --- !u!33 &6413673321888523042
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61,8 +62,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8552693211974142739, guid: 661c39597eb12a54bb51fb82b1277f92, type: 3}
-  - {fileID: 4283402219374069885, guid: 661c39597eb12a54bb51fb82b1277f92, type: 3}
+  - {fileID: 2100000, guid: 99ce460d4ff2b1844bfb358dd3a2da82, type: 2}
+  - {fileID: 2100000, guid: 99ce460d4ff2b1844bfb358dd3a2da82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8269213028247546487
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342550600568010301}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6124436484349841348, guid: 661c39597eb12a54bb51fb82b1277f92, type: 3}
