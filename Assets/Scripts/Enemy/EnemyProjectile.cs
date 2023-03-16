@@ -51,9 +51,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //playerTarget.GetComponent<PlayerLife>().HurtPlayer(damage);
             LifeSystem.Instance.HurtPlayer(damage);
-            //Debug.Log("Prueba cosa");
             DestroyProjectile();
         }
     }

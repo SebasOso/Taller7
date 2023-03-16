@@ -152,11 +152,11 @@ public class Player : MonoBehaviour
 
         if (isMoving)
         {
-            Debug.Log("Player start to move");
+            //Debug.Log("Player start to move");
         }
         else if (!isMoving)
         {
-            Debug.Log("Player stop moving");
+           // Debug.Log("Player stop moving");
         }
     }
 }

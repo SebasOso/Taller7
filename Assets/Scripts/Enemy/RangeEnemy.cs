@@ -16,11 +16,10 @@ public class RangeEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerMask;
     private bool hintShown = false;
     private EnemyHealth health;
-    private Transform player;      
+    [SerializeField]private Transform player;      
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBetweenShots = startTimeBetweenShots;
     }
 
@@ -32,7 +31,7 @@ public class RangeEnemy : MonoBehaviour
         {
             EnemyMovement();
             Bullets();
-            Debug.Log("HOY TE MUEREEEEEEEEEEEEEEES");
+            //Debug.Log("HOY TE MUEREEEEEEEEEEEEEEES");
             HurtEnemyRange();
             Hint();
         }
