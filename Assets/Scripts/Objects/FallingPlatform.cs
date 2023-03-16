@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plataformavaria : MonoBehaviour
+public class FallingPlatform : MonoBehaviour
 {
     [SerializeField] private float caidaen = 1f;
     [SerializeField] private float destruccion = 2f;

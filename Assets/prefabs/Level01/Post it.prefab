@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6413673321888523042}
   - component: {fileID: 9143721964223879144}
   - component: {fileID: 8269213028247546487}
+  - component: {fileID: 7073695710370555133}
   m_Layer: 8
   m_Name: Post it
   m_TagString: Untagged
@@ -97,5 +98,19 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6124436484349841348, guid: 661c39597eb12a54bb51fb82b1277f92, type: 3}
+--- !u!64 &7073695710370555133
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342550600568010301}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6124436484349841348, guid: 661c39597eb12a54bb51fb82b1277f92, type: 3}
