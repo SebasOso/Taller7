@@ -49,7 +49,7 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (LifeSystem.Instance.health <= 9 && !hintShown)
         {
-            UIManager.Instance.ShowHint();
+            UIManager.Instance.ShowMeleeHint();
             hintShown = true;
         }
     }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class KeyScript : MonoBehaviour
 {
-    public DoorScript abrirpuerta;
+   // public DoorScript abrirpuerta;
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            abrirpuerta.desbloqueada = true;
+           // abrirpuerta.desbloqueada = true;
         }
         Destroy(gameObject);
     }
