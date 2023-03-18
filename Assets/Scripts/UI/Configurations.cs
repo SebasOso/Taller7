@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class Configurations : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     public void CloseGame()
     {
         Application.Quit();
