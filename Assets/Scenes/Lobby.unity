@@ -673,7 +673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1091014413}
         m_TargetAssemblyTypeName: Configurations, Assembly-CSharp
         m_MethodName: GoLobby
         m_Mode: 1
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1091014413}
         m_TargetAssemblyTypeName: Configurations, Assembly-CSharp
         m_MethodName: CloseGame
         m_Mode: 1
@@ -2458,7 +2458,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1091014413}
         m_TargetAssemblyTypeName: Configurations, Assembly-CSharp
         m_MethodName: StopMusic
         m_Mode: 1
@@ -3625,7 +3625,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1091014413}
         m_TargetAssemblyTypeName: Configurations, Assembly-CSharp
         m_MethodName: PlayMusic
         m_Mode: 1
