@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float groundDrag;
     public float airMultiplier;
     public bool isMoving;
+    public float gravityForce = 1.8f;
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
 
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
     public float doubleJumpForce = 5f;
     public float jumpDelay = 0.25f;
     private bool isGrounded = true;
+    private Vector3 gravityDirection = new Vector3(0, -1, 0);
     private bool canDoubleJump = false;
     private float jumpDelayTimer;
     public LayerMask groundMask;
@@ -99,6 +101,7 @@ public class Player : MonoBehaviour
         // in air
         else if(!isGrounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(gravityDirection * gravityForce, ForceMode.Acceleration);
     }
 
     private void SpeedControl()

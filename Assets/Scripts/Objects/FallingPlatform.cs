@@ -16,10 +16,11 @@ public class FallingPlatform : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         posicion = this.gameObject.transform.position;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("ME PISASTE WE");
             StartCoroutine(Caida());
         }
     }

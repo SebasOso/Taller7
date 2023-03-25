@@ -6501,7 +6501,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4182154053305145929}
-  m_LocalRotation: {x: 0.075327836, y: -0.000000017157499, z: 0.0000000012961198, w: 0.9971588}
+  m_LocalRotation: {x: 0.075327836, y: 0.000000017157493, z: -0.0000000012961194, w: 0.9971588}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7090,7 +7090,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5716116825120845542}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6a8f8eb06681cc147946182accd46a6f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -7190,6 +7190,7 @@ MonoBehaviour:
   groundDrag: 7
   airMultiplier: 1
   isMoving: 0
+  gravityForce: 0
   walkSpeed: 0
   sprintSpeed: 0
   whatIsGround:
@@ -7322,7 +7323,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5716116826564064279}
-  m_LocalRotation: {x: 0.075327836, y: -0.000000034314994, z: 0.000000002592239, w: 0.9971588}
+  m_LocalRotation: {x: 0.075327836, y: 0.000000034314994, z: -0.000000002592239, w: 0.9971588}
   m_LocalPosition: {x: 0, y: 1.9919996, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
