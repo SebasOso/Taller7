@@ -6,19 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class GoToFinalScene : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private bool levelCompleted;
     public void LoadData(GameData data)
     {
     }
     public void SaveData(GameData data)
     {
-        data.collectablesIndexes[0] = 1;
+        if (levelCompleted)
+        {
+            data.collectablesIndexes[0] = 1;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("FinalCinematic");
+            levelCompleted = true;
+            DataPersistenceManager.instance.SaveGame();
+            SceneManager.LoadScene("FinalCinematic");  
         }
     }
 }
