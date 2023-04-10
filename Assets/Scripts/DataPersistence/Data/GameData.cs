@@ -10,6 +10,7 @@ public class GameData
     public int[] collectablesIndexes;
     public float soundVolume;
     public float musicVolume;
+    public int keyCollected;
     public GameData() 
     {
         collectablesIndexes = new int[3] {0,0,0};
@@ -17,5 +18,6 @@ public class GameData
         checkPositions = new List<Vector3>();
         musicVolume = 1;
         soundVolume = 1;
+        keyCollected = 0;
     }
 }

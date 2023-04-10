@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d371df5560d9c2429415c73f9988767
+guid: 70b8e80dcf0a2994cb5b34ee898f134a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,9 +9,8 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Simple Handmade
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 03d737ff7c074174389de05d3e1ccd36, type: 3}
+  - New Athletic M54
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
