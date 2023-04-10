@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] public GameObject LevelHint;
     [SerializeField] public GameObject MeleeHint;
     [SerializeField] public GameObject EnemyRangeHint;
     public static UIManager Instance { get; private set; }
     private void Awake()
     {
         Instance = this;
+    }
+    private void Start()
+    {
+        ShowLevelHint();
     }
     public void ShowHint()
     {
@@ -26,9 +31,19 @@ public class UIManager : MonoBehaviour
         MeleeHint.SetActive(true);
         StartCoroutine(DontShowHintMelee());
     }
+    private void ShowLevelHint()
+    {
+        LevelHint.SetActive(true);
+        StartCoroutine (DontShowLevelHint());
+    }
     private IEnumerator DontShowHintMelee()
     {
         yield return new WaitForSeconds(3);
         MeleeHint.SetActive(false);
+    }
+    private IEnumerator DontShowLevelHint()
+    {
+        yield return new WaitForSeconds(3);
+        LevelHint.SetActive(false);
     }
 }

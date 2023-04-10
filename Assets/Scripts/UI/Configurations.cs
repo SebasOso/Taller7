@@ -7,6 +7,8 @@ public class Configurations : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameObject ui;
+    [SerializeField] private GameObject checkMute;
     private bool isPaused;
     private void Awake()
     {
@@ -36,13 +38,15 @@ public class Configurations : MonoBehaviour
     }
     private void PauseGame()
     {
+        ui.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         Player.Instance.canJump = false;
         isPaused = true;
     }
-    private void ResumeGame()
+    public void ResumeGame()
     {
+        ui.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         Player.Instance.canJump = true;
@@ -50,7 +54,16 @@ public class Configurations : MonoBehaviour
     }
     public void StopMusic()
     {
-        audioSource.mute = true;
+        if (audioSource.mute == false)
+        {
+            audioSource.mute = true;
+            checkMute.SetActive(true);
+        }
+        else
+        {
+            audioSource.mute = false;
+            checkMute.SetActive(false);
+        }
     }
     public void PlayMusic()
     {
