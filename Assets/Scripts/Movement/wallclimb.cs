@@ -21,7 +21,7 @@ public class wallclimb : MonoBehaviour
     public bool tenerEnergia;
     void Start()
     {
-
+        
         jugador = GetComponent<Player>();
         inside = false;
         time_remining = max_time;
@@ -30,29 +30,29 @@ public class wallclimb : MonoBehaviour
 
     // Update is called once per frame
 
-
+ 
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "climb")
         {
-            if (tenerEnergia == true)
+            if(tenerEnergia==true)
             {
                 time_remining = max_time;
                 timer.active = true;
             }
-
+            
             rigidbody.useGravity = false;
             jugador.enabled = false;
             inside = !inside;
         }
         if (other.gameObject.tag != "climb")
         {
-
-
-            timer.active = false;
-
-
+           
+                
+             timer.active = false;
+           
+            
             rigidbody.useGravity = true;
             jugador.enabled = true;
             inside = !inside;
@@ -63,9 +63,9 @@ public class wallclimb : MonoBehaviour
     {
         if (other.gameObject.tag == "climb")
         {
-
+           
             timer.active = false;
-
+           
             rigidbody.useGravity = true;
             jugador.enabled = true;
             inside = !inside;
