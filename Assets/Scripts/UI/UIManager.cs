@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
     }
     private IEnumerator DontShowLevelHint()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         LevelHint.SetActive(false);
     }
 }

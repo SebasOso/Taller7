@@ -12,7 +12,7 @@ public class MeleeAtack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && Time.time >= lastAttackTime + 1f/ attackSpeed)
+        if (Input.GetMouseButtonDown(0) && Time.time >= lastAttackTime + 1f/ attackSpeed)
         {
             Attack();
             lastAttackTime = Time.time;
