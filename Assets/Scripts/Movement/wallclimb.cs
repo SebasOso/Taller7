@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class wallclimb : MonoBehaviour
+public class WallClimb : MonoBehaviour
 {
 
 
@@ -25,7 +25,7 @@ public class wallclimb : MonoBehaviour
         jugador = GetComponent<Player>();
         inside = false;
         time_remining = max_time;
-        timer.active = false;
+        timer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,7 +39,7 @@ public class wallclimb : MonoBehaviour
             if (tenerEnergia == true)
             {
                 time_remining = max_time;
-                timer.active = true;
+                timer.SetActive(true);
             }
 
             rigidbody.useGravity = false;
@@ -50,7 +50,7 @@ public class wallclimb : MonoBehaviour
         {
 
 
-            timer.active = false;
+            timer.SetActive(false);
 
 
             rigidbody.useGravity = true;
@@ -64,7 +64,7 @@ public class wallclimb : MonoBehaviour
         if (other.gameObject.tag == "climb")
         {
 
-            timer.active = false;
+            timer.SetActive(false);
 
             rigidbody.useGravity = true;
             jugador.enabled = true;
@@ -74,7 +74,7 @@ public class wallclimb : MonoBehaviour
 
     void Update()
     {
-        if (timer.active == true)
+        if (timer.activeSelf == false)
         {
             if (time_remining > 0)
             {
@@ -84,7 +84,7 @@ public class wallclimb : MonoBehaviour
             else
             {
                 inside = false;
-                timer.active = false;
+                timer.SetActive(false);
                 rigidbody.useGravity = true;
             }
         }
