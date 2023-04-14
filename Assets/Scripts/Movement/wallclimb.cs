@@ -74,6 +74,11 @@ public class WallClimb : MonoBehaviour
 
     void Update()
     {
+        ClimbingMovement();
+    }
+
+    private void ClimbingMovement()
+    {
         if (timer.activeSelf == false)
         {
             if (time_remining > 0)
@@ -129,7 +134,5 @@ public class WallClimb : MonoBehaviour
             chController.transform.position += Vector3.right / speedDown;
         }
     }
-
-
 
 }
