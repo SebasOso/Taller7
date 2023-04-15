@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WallClimb : MonoBehaviour
+public class Climbing : MonoBehaviour
 {
-
 
     public Transform chController;
     bool inside = false;
