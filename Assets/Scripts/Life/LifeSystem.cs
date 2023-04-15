@@ -16,7 +16,8 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     public float health;
     public float playerHealth = 10;
     public static bool isAlive = true;
-    private int playerLifes = 0;
+    public int playerLifes = 0;
+    public GameObject[] lifesIcons;
 
     [Header("Invincibility parameters")]
     public float invincibilityLength;
@@ -40,7 +41,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     [SerializeField]private Color32 defaultSkinColor = new Color32(255, 255, 255, 255);
     private Color32 DamageSkinColor = new Color32(255, 175, 175, 255);
     private bool noLifes;
-    [SerializeField] private TextMeshProUGUI lifes;
+    //[SerializeField] private TextMeshProUGUI lifes;
     public static LifeSystem Instance { get; private set; }
     private void Awake()
     {
@@ -56,7 +57,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     }
     void Update()
     {
-        lifes.text = "" + playerLifes;
+        //lifes.text = "" + playerLifes;
         HealthBarColor();
         health = Mathf.Clamp(health, 0, playerHealth);
         UpdateHealthUI();
@@ -74,19 +75,26 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
         }
         Invulnerability();
     }
-    public void AddLifes()
+    public void UpdateLifes()
     {
-        this.playerLifes++;
+        for (int i = 0; i < lifesIcons.Length; i++)
+        {
+            if (i < playerLifes)
+            {
+                lifesIcons[i].SetActive(true);
+            }
+            else
+            {
+                lifesIcons[i].SetActive(false);
+            }
+        }
     }
     private void RestLifes()
     {
-        if (this.playerLifes > 0)
+        playerLifes--;
+        UpdateLifes();
+        if (playerLifes == 0)
         {
-            this.playerLifes--;
-        }
-        if (this.playerLifes <=0)
-        {
-            this.playerLifes = 0;
             noLifes = true;
         }
     }

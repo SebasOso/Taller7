@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class KeyScript : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] private GameObject keyImage;
     [SerializeField] private int keyIndex;
     public void LoadData(GameData data)
     {
@@ -23,8 +22,7 @@ public class KeyScript : MonoBehaviour, IDataPersistence
             // abrirpuerta.desbloqueada = true;
             keyIndex = 1;
             DataPersistenceManager.instance.SaveGame();
-            //DataPersistenceManager.instance.LoadGame();
-            keyImage.SetActive(true);
+            DataPersistenceManager.instance.LoadGame();
         }
         Destroy(gameObject);
     }
