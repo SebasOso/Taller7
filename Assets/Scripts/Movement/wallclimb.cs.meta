@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Movement/wallclimb.cs.meta
 guid: b0934f134049d96439504f72355f6df0
+=======
+guid: 137fce2acc78adb45b30ac59c3b89b11
+>>>>>>> main:Assets/Scripts/Movement/Jugador.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
