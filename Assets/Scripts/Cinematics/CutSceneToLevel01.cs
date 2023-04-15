@@ -16,4 +16,8 @@ public class CutSceneToLevel01 : MonoBehaviour
     {
         SceneManager.LoadScene("Level01");
     }
+    public void Skip()
+    {
+        SceneManager.LoadScene("Level01");
+    }
 }

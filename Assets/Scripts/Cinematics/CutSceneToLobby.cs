@@ -16,4 +16,8 @@ public class CutSceneToLobby : MonoBehaviour
     {
         SceneManager.LoadScene("Lobby");
     }
+    public void Skip()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
 }
