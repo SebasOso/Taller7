@@ -32,6 +32,12 @@ public class TargetLocation : MonoBehaviour
         targetValidated = targetList.Count > 0;
 
     }
+
+  void Update()
+    {
+      
+      
+    }
     // --
     void LateUpdate()
     {
@@ -49,6 +55,9 @@ public class TargetLocation : MonoBehaviour
         {
             indicatorReference.gameObject.SetActive(false);
         }
+        
+
+
     }
     // --
     public void UpdateTargetSystem(int index)
@@ -69,6 +78,9 @@ public class TargetLocation : MonoBehaviour
                 indicatorVector.x = cameraTarget.WorldToViewportPoint(targetList[index].position).x;
                 indicatorVector.y = cameraTarget.WorldToViewportPoint(targetList[index].position).y;
                 indicatorVector.z = cameraTarget.WorldToViewportPoint(targetList[index].position).z;
+                var screamPos = cameraTarget.WorldToScreenPoint(transform.position);
+                indicatorReference.gameObject.SetActive(screamPos.z > 90);
+                Debug.Log(screamPos.z.ToString());
                 indicatorReference.rectTransform.anchorMin = indicatorVector;
                 indicatorReference.rectTransform.anchorMax = indicatorVector;
             }
