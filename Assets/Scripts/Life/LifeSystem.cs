@@ -53,6 +53,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
 
     void Start()
     {
+        UpdateLifes();
         isAlive = true;
     }
     void Update()
@@ -77,13 +78,16 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     }
     public void UpdateLifes()
     {
+        int iconsToActivate = playerLifes;
+        int iconsToDeactivate = lifesIcons.Length - playerLifes;
+
         for (int i = 0; i < lifesIcons.Length; i++)
         {
-            if (i < playerLifes)
+            if (i < iconsToActivate)
             {
                 lifesIcons[i].SetActive(true);
             }
-            else
+            else if (i < iconsToActivate + iconsToDeactivate)
             {
                 lifesIcons[i].SetActive(false);
             }
