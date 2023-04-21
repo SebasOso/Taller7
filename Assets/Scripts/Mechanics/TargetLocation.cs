@@ -79,7 +79,20 @@ public class TargetLocation : MonoBehaviour
                 indicatorVector.y = cameraTarget.WorldToViewportPoint(targetList[index].position).y;
                 indicatorVector.z = cameraTarget.WorldToViewportPoint(targetList[index].position).z;
                 var screamPos = cameraTarget.WorldToScreenPoint(transform.position);
-                indicatorReference.gameObject.SetActive(screamPos.z > 90);
+                int cameratoplayer= Mathf.RoundToInt(Vector3.Distance(playerReference.transform.position, cameraTarget.transform.position));
+                int playertotarget = Mathf.RoundToInt(Vector3.Distance(playerReference.transform.position, targetList[index].position));
+                if (screamPos.z > 90)
+                {
+                    indicatorReference.gameObject.SetActive(true);
+                }
+                else if(screamPos.z < 90 && cameratoplayer<8 && playertotarget<50)
+                {
+                    indicatorReference.gameObject.SetActive(true);
+                }
+                else
+                {
+                    indicatorReference.gameObject.SetActive(false);
+                }
                
                 indicatorReference.rectTransform.anchorMin = indicatorVector;
                 indicatorReference.rectTransform.anchorMax = indicatorVector;
