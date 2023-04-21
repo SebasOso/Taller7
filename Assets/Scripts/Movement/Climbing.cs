@@ -13,7 +13,7 @@ public class Climbing : MonoBehaviour
     public Rigidbody rigidbody;
     public GameObject timer;
     bool agarre = false;
-
+    bool direccionz = false;
     public Image image;
     public float max_time = 7.0f;
     float time_remining;
@@ -30,11 +30,29 @@ public class Climbing : MonoBehaviour
     // Update is called once per frame
 
 
-
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "climb")
+
+
+        Debug.Log("aqui");
+        if (other.gameObject.tag == "climbz")
         {
+            Debug.Log("aqui2");
+            direccionz = true;
+            if (tenerEnergia == true)
+            {
+                time_remining = max_time;
+                timer.SetActive(true);
+            }
+
+            rigidbody.useGravity = false;
+            jugador.enabled = false;
+            inside = !inside;
+
+        }
+        else if (other.gameObject.tag == "climbx")
+        {
+            direccionz = false;
             if (tenerEnergia == true)
             {
                 time_remining = max_time;
@@ -45,22 +63,26 @@ public class Climbing : MonoBehaviour
             jugador.enabled = false;
             inside = !inside;
         }
-        if (other.gameObject.tag != "climb")
+        else
         {
+        
+
+                Debug.Log("hit");
+                timer.SetActive(false);
 
 
-            timer.SetActive(false);
-
-
-            rigidbody.useGravity = true;
-            jugador.enabled = true;
-            inside = !inside;
+                rigidbody.useGravity = true;
+                jugador.enabled = true;
+                inside = !inside;
+            
         }
+        
     }
 
     private void OnCollisionExit(Collision other)
     {
-        if (other.gameObject.tag == "climb")
+
+        if (other.gameObject.tag == "climbz" || other.gameObject.tag == "climbx")
         {
 
             timer.SetActive(false);
@@ -78,7 +100,7 @@ public class Climbing : MonoBehaviour
 
     private void ClimbingMovement()
     {
-        if (timer.activeSelf == false)
+        if (tenerEnergia == true)
         {
             if (time_remining > 0)
             {
@@ -92,45 +114,102 @@ public class Climbing : MonoBehaviour
                 rigidbody.useGravity = true;
             }
         }
-        if (inside == true && Input.GetKey(KeyCode.W))
+
+        if (direccionz == false)
         {
-            chController.transform.position += Vector3.up / speedDown;
+            if (inside == true && Input.GetKey(KeyCode.W))
+            {
+                chController.transform.position += Vector3.up / speedDown;
+            }
+
+            if (inside == true && Input.GetKey(KeyCode.UpArrow))
+            {
+                chController.transform.position += Vector3.up / speedDown;
+            }
+
+
+
+            if (inside == true && Input.GetKey(KeyCode.S))
+            {
+                chController.transform.position += Vector3.down / speedDown;
+            }
+
+            if (inside == true && Input.GetKey(KeyCode.DownArrow))
+            {
+                chController.transform.position += Vector3.down / speedDown;
+            }
+
+
+            if (inside == true && Input.GetKey(KeyCode.A))
+            {
+                chController.transform.position += Vector3.left / speedDown;
+            }
+
+            if (inside == true && Input.GetKey(KeyCode.LeftArrow))
+            {
+                chController.transform.position += Vector3.left / speedDown;
+            }
+
+            if (inside == true && Input.GetKey(KeyCode.D))
+            {
+                chController.transform.position += Vector3.right / speedDown;
+
+            }
+
+            if (inside == true && Input.GetKey(KeyCode.RightArrow))
+            {
+                chController.transform.position += Vector3.right / speedDown;
+
+
+            }
         }
-
-        if (inside == true && Input.GetKey(KeyCode.UpArrow))
+        else
         {
-            chController.transform.position += Vector3.up / speedDown;
-        }
+            if (inside == true && Input.GetKey(KeyCode.W))
+            {
+                chController.transform.position += Vector3.up / speedDown;
+            }
 
-        if (inside == true && Input.GetKey(KeyCode.S))
-        {
-            chController.transform.position += Vector3.down / speedDown;
-        }
-
-        if (inside == true && Input.GetKey(KeyCode.DownArrow))
-        {
-            chController.transform.position += Vector3.down / speedDown;
-        }
+            if (inside == true && Input.GetKey(KeyCode.UpArrow))
+            {
+                chController.transform.position += Vector3.up / speedDown;
+            }
 
 
-        if (inside == true && Input.GetKey(KeyCode.A))
-        {
-            chController.transform.position += Vector3.left / speedDown;
-        }
 
-        if (inside == true && Input.GetKey(KeyCode.LeftArrow))
-        {
-            chController.transform.position += Vector3.left / speedDown;
-        }
+            if (inside == true && Input.GetKey(KeyCode.S))
+            {
+                chController.transform.position += Vector3.down / speedDown;
+            }
 
-        if (inside == true && Input.GetKey(KeyCode.D))
-        {
-            chController.transform.position += Vector3.right / speedDown;
-        }
+            if (inside == true && Input.GetKey(KeyCode.DownArrow))
+            {
+                chController.transform.position += Vector3.down / speedDown;
+            }
 
-        if (inside == true && Input.GetKey(KeyCode.RightArrow))
-        {
-            chController.transform.position += Vector3.right / speedDown;
+
+            if (inside == true && Input.GetKey(KeyCode.A))
+            {
+                chController.transform.position += Vector3.back / speedDown;
+            }
+
+            if (inside == true && Input.GetKey(KeyCode.LeftArrow))
+            {
+                chController.transform.position += Vector3.back / speedDown;
+            }
+
+            if (inside == true && Input.GetKey(KeyCode.D))
+            {
+                chController.transform.position += Vector3.forward / speedDown;
+
+            }
+
+            if (inside == true && Input.GetKey(KeyCode.RightArrow))
+            {
+                chController.transform.position += Vector3.forward / speedDown;
+
+
+            }
         }
     }
 
