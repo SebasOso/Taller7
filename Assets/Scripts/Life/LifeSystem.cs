@@ -97,6 +97,8 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     {
         playerLifes--;
         UpdateLifes();
+        DataPersistenceManager.instance.SaveGame();
+        DataPersistenceManager.instance.LoadGame();
         if (playerLifes == 0)
         {
             noLifes = true;
@@ -161,7 +163,6 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private void Die()
     {
         isDied = true;
-        Destroy(transform.gameObject);
     }
     private void Invulnerability()
     {
