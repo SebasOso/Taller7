@@ -163,6 +163,9 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private void Die()
     {
         isDied = true;
+        SetDefault();
+        DataPersistenceManager.instance.LoadGame();
+        SceneManager.LoadSceneAsync("Level01");
     }
     private void Invulnerability()
     {
@@ -206,5 +209,9 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     public void SaveData(GameData data)
     {
         data.lifes = this.playerLifes;
+    }
+    private void SetDefault()
+    {
+        this.playerLifes = 5;
     }
 }
