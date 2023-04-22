@@ -11,7 +11,7 @@ using CodeMonkey.Utils;
 
 public class LifeSystem : MonoBehaviour, IDataPersistence
 {
-    private bool isDied = false;
+    [SerializeField] public bool isDied = false;
     [Header("Player Health")]
     public float health;
     public float playerHealth = 10;
@@ -164,7 +164,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     {
         isDied = true;
         SetDefault();
-        DataPersistenceManager.instance.LoadGame();
+        DataPersistenceManager.instance.SaveGame();
         SceneManager.LoadSceneAsync("Level01");
     }
     private void Invulnerability()
@@ -213,5 +213,6 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private void SetDefault()
     {
         this.playerLifes = 5;
+
     }
 }

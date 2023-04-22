@@ -11,6 +11,10 @@ public class CheckPoint : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data) 
     {
+        if (LifeSystem.Instance.isDied)
+        {
+            data.checkPositions.Clear();
+        }
         if (collected)
         {
             if (!data.checkPositions.Contains(this.transform.position))
