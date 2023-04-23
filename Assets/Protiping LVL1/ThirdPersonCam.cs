@@ -1,6 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.Windows;
 
 public class ThirdPersonCam : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class ThirdPersonCam : MonoBehaviour
     public Transform player;
     public Transform playerObj;
     public Rigidbody rb;
-
+    [SerializeField] GameObject brain;
     public float rotationSpeed;
 
     public Transform combatLookAt;
@@ -19,6 +21,7 @@ public class ThirdPersonCam : MonoBehaviour
     public GameObject topDownCam;
 
     public CameraStyle currentStyle;
+    private bool rightClick;
     public enum CameraStyle
     {
         Basic,
@@ -34,6 +37,12 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            rightClick = true;
+        }
+        else if (Input.GetMouseButtonUp(1)) { rightClick = false; }
+        brain.SetActive(rightClick);
         // switch styles
         if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchCameraStyle(CameraStyle.Basic);
         if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchCameraStyle(CameraStyle.Combat);
