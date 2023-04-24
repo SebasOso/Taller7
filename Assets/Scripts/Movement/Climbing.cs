@@ -34,10 +34,10 @@ public class Climbing : MonoBehaviour
     {
 
 
-        Debug.Log("aqui");
+
         if (other.gameObject.tag == "climbz")
         {
-            Debug.Log("aqui2");
+           
             direccionz = true;
             if (tenerEnergia == true)
             {
@@ -45,6 +45,7 @@ public class Climbing : MonoBehaviour
                 timer.SetActive(true);
             }
 
+            rigidbody.velocity = new Vector3(0, 0, 0);
             rigidbody.useGravity = false;
             jugador.enabled = false;
             inside = !inside;
@@ -58,7 +59,7 @@ public class Climbing : MonoBehaviour
                 time_remining = max_time;
                 timer.SetActive(true);
             }
-
+            rigidbody.velocity = new Vector3(0, 0, 0);
             rigidbody.useGravity = false;
             jugador.enabled = false;
             inside = !inside;
@@ -67,7 +68,7 @@ public class Climbing : MonoBehaviour
         {
         
 
-                Debug.Log("hit");
+             
                 timer.SetActive(false);
 
 
@@ -92,14 +93,31 @@ public class Climbing : MonoBehaviour
             inside = !inside;
         }
     }
+    private void OnCollisionStay(Collision collision)
+    {
+        
+    }
 
     void Update()
     {
         ClimbingMovement();
+
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log(inside.ToString());
+        }
     }
 
     private void ClimbingMovement()
     {
+        if(inside==false)
+        {
+
+            timer.SetActive(false);
+
+            rigidbody.useGravity = true;
+            jugador.enabled = true;
+        }
         if (tenerEnergia == true)
         {
             if (time_remining > 0)
