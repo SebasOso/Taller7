@@ -37,7 +37,7 @@ public class Climbing : MonoBehaviour
 
         if (other.gameObject.tag == "climbz")
         {
-           
+
             direccionz = true;
             if (tenerEnergia == true)
             {
@@ -48,7 +48,7 @@ public class Climbing : MonoBehaviour
             rigidbody.velocity = new Vector3(0, 0, 0);
             rigidbody.useGravity = false;
             jugador.enabled = false;
-            inside = !inside;
+            inside = true;
 
         }
         else if (other.gameObject.tag == "climbx")
@@ -62,19 +62,19 @@ public class Climbing : MonoBehaviour
             rigidbody.velocity = new Vector3(0, 0, 0);
             rigidbody.useGravity = false;
             jugador.enabled = false;
-            inside = !inside;
+            inside = true;
         }
         else
         {
-        
-
-             
-                timer.SetActive(false);
 
 
-                rigidbody.useGravity = true;
-                jugador.enabled = true;
-                inside = !inside;
+
+            timer.SetActive(false);
+
+
+            rigidbody.useGravity = true;
+            jugador.enabled = true;
+            inside = false;
             
         }
         
@@ -85,12 +85,12 @@ public class Climbing : MonoBehaviour
 
         if (other.gameObject.tag == "climbz" || other.gameObject.tag == "climbx")
         {
-
+            rigidbody.velocity = new Vector3(0, 1, 0);
             timer.SetActive(false);
 
             rigidbody.useGravity = true;
             jugador.enabled = true;
-            inside = !inside;
+            inside = false;
         }
     }
     private void OnCollisionStay(Collision collision)
