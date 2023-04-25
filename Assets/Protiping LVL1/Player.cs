@@ -47,6 +47,10 @@ public class Player : MonoBehaviour
     public float groundDistance = 0.4f;
     //Events
     public UnityEvent OnPlayerMove;
+
+    //Animator
+
+    public Animator animator;
     public static Player Instance { get; private set; }
     private void Awake()
     {

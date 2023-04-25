@@ -11,12 +11,13 @@ using CodeMonkey.Utils;
 
 public class LifeSystem : MonoBehaviour, IDataPersistence
 {
-    private bool isDied = false;
+    [SerializeField] public bool isDied = false;
     [Header("Player Health")]
     public float health;
     public float playerHealth = 10;
     public static bool isAlive = true;
-    private int playerLifes = 0;
+    public int playerLifes = 0;
+    public GameObject[] lifesIcons;
 
     [Header("Invincibility parameters")]
     public float invincibilityLength;
@@ -40,7 +41,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     [SerializeField]private Color32 defaultSkinColor = new Color32(255, 255, 255, 255);
     private Color32 DamageSkinColor = new Color32(255, 175, 175, 255);
     private bool noLifes;
-    [SerializeField] private TextMeshProUGUI lifes;
+    //[SerializeField] private TextMeshProUGUI lifes;
     public static LifeSystem Instance { get; private set; }
     private void Awake()
     {
@@ -52,11 +53,12 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
 
     void Start()
     {
+        UpdateLifes();
         isAlive = true;
     }
     void Update()
     {
-        lifes.text = "" + playerLifes;
+        //lifes.text = "" + playerLifes;
         HealthBarColor();
         health = Mathf.Clamp(health, 0, playerHealth);
         UpdateHealthUI();
@@ -74,19 +76,31 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
         }
         Invulnerability();
     }
-    public void AddLifes()
+    public void UpdateLifes()
     {
-        this.playerLifes++;
+        int iconsToActivate = playerLifes;
+        int iconsToDeactivate = lifesIcons.Length - playerLifes;
+
+        for (int i = 0; i < lifesIcons.Length; i++)
+        {
+            if (i < iconsToActivate)
+            {
+                lifesIcons[i].SetActive(true);
+            }
+            else if (i < iconsToActivate + iconsToDeactivate)
+            {
+                lifesIcons[i].SetActive(false);
+            }
+        }
     }
     private void RestLifes()
     {
-        if (this.playerLifes > 0)
+        playerLifes--;
+        UpdateLifes();
+        DataPersistenceManager.instance.SaveGame();
+        DataPersistenceManager.instance.LoadGame();
+        if (playerLifes == 0)
         {
-            this.playerLifes--;
-        }
-        if (this.playerLifes <=0)
-        {
-            this.playerLifes = 0;
             noLifes = true;
         }
     }
@@ -149,7 +163,9 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private void Die()
     {
         isDied = true;
-        Destroy(transform.gameObject);
+        SetDefault();
+        DataPersistenceManager.instance.SaveGame();
+        SceneManager.LoadSceneAsync("Level01");
     }
     private void Invulnerability()
     {
@@ -193,5 +209,10 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     public void SaveData(GameData data)
     {
         data.lifes = this.playerLifes;
+    }
+    private void SetDefault()
+    {
+        this.playerLifes = 5;
+
     }
 }

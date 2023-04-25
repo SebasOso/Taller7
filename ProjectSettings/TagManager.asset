@@ -9,6 +9,10 @@ TagManager:
   - CombatZone
   - Enemy
   - EnemyRangeHint
+  - climb
+  - Guides
+  - climbz
+  - climbx
   layers:
   - Default
   - TransparentFX

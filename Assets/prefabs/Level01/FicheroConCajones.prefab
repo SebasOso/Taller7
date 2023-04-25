@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8240211790648241298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FicheroConCajones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 8240211790648241297}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -8.33, y: -29.99, z: 46.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8489748786705131653}
@@ -72,7 +72,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.664467
+      value: -4.58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_LocalRotation.w
@@ -102,9 +102,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6026004772984408981, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_Name
       value: Cajon fichero completo
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380080921822813343, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
@@ -124,8 +136,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.021157337, y: 0.021683423, z: 0.008555336}
-  m_Center: {x: -0.00006191987, y: -0.000020347545, z: -0.0044206227}
+  m_Size: {x: 0.021157337, y: 0.021683417, z: 0.0100794425}
+  m_Center: {x: -0.000061919454, y: -0.000020346859, z: -0.0036585624}
 --- !u!1 &6774619320956041989 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6026004772984408981, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
@@ -230,9 +242,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6026004772984408981, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_Name
       value: Cajon fichero completo (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380080921822813343, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
@@ -366,6 +390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fichero
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a7c1cb55ccb8f04aad7d458687494a6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a7c1cb55ccb8f04aad7d458687494a6, type: 3}
 --- !u!4 &8489748785704250811 stripped
@@ -480,9 +508,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6026004772984408981, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_Name
       value: Cajon fichero completo (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380080921822813343, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
@@ -578,7 +618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.8626213
+      value: -5.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_LocalRotation.w
@@ -608,9 +648,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6026004772984408981, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_Name
       value: Cajon fichero completo (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380080921822813343, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
@@ -736,9 +788,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6026004772984408981, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_Name
       value: Cajon fichero completo (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380080921822813343, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
@@ -864,9 +928,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6026004772984408981, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_Name
       value: Cajon fichero completo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380080921822813343, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
@@ -962,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.692116
+      value: -4.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_LocalRotation.w
@@ -992,9 +1068,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6026004772984408981, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
       propertyPath: m_Name
       value: Cajon fichero completo (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380080921822813343, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f537b32b81cfa41be7874eaa9f2c03, type: 3}
