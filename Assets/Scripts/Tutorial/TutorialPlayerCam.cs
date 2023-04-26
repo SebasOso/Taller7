@@ -21,6 +21,10 @@ public class TutorialPlayerCam : MonoBehaviour
     public CameraStyle currentStyle;
     private bool rightClick;
     private bool movementHasShown;
+    [SerializeField]private bool waitMove = false;
+    private bool prepareHasShown;
+    private bool meleeHasShown;
+
     public enum CameraStyle
     {
         Basic,
@@ -53,6 +57,16 @@ public class TutorialPlayerCam : MonoBehaviour
         else if (UITutorialManager.Instance.mouse == false)
         {
             brain.SetActive(false);
+        }
+        if (waitMove == true && !prepareHasShown)
+        {
+            StartCoroutine(Prepare());
+            prepareHasShown = true;
+        }
+        if (UITutorialManager.Instance.enemyPrepare && !meleeHasShown)
+        {
+            StartCoroutine(MeleeEnemy());
+            meleeHasShown = true;
         }
         // switch styles
         if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchCameraStyle(CameraStyle.Basic);
@@ -106,5 +120,17 @@ public class TutorialPlayerCam : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         UITutorialManager.Instance.Movement();
+        yield return new WaitForSeconds(6);
+        waitMove = true;
+    }
+    private IEnumerator Prepare()
+    {
+        yield return new WaitForSeconds (6);
+        UITutorialManager.Instance.MeleePrepare();
+    }
+    private IEnumerator MeleeEnemy()
+    {
+        yield return new WaitForSeconds(6);
+        UITutorialManager.Instance.MeleeSpawn();
     }
 }

@@ -9,6 +9,8 @@ public class UITutorialManager : MonoBehaviour
     [SerializeField] public GameObject loockAroundHint;
     [SerializeField] public GameObject movementHint;
     [SerializeField] public GameObject meleeHint;
+    [SerializeField] public GameObject meleePrepare;
+    [SerializeField] public GameObject meleeEnemy;
     public bool mouse = false;
     public bool movement = false;
     public bool enemyPrepare = false;
@@ -53,13 +55,31 @@ public class UITutorialManager : MonoBehaviour
         movementHint.SetActive(false);
         movement = true;    
     }
-    public void Melee()
+    public void MeleeSpawn()
     {
         meleeHint.SetActive(true);
+        StartCoroutine (DontShowMelee());   
     }
     private IEnumerator DontShowMelee()
     {
         yield return new WaitForSeconds(6);
         meleeHint.SetActive(false);
+    }
+    public void MeleePrepare()
+    {
+        meleePrepare.SetActive(true);
+        StartCoroutine(DontShowMeleePrepare());
+    }
+    private IEnumerator DontShowMeleePrepare()
+    {
+        yield return new WaitForSeconds(6);
+        meleePrepare.SetActive(false);
+        enemyPrepare = true;
+        StartCoroutine(SpawnEnemy());
+    }
+    private IEnumerator SpawnEnemy()
+    {
+        yield return new WaitForSeconds(3);
+        meleeEnemy.SetActive(true);
     }
 }

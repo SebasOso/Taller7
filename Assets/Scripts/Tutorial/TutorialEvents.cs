@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TutorialEvents : MonoBehaviour
 {
     private bool hasShownLoock = false;
-    [SerializeField] GameObject meleeEnemy;
     public bool meleeEnemyIsDead;
     public static TutorialEvents Instance { get; private set; }
     private void Awake()
@@ -28,15 +28,5 @@ public class TutorialEvents : MonoBehaviour
             UITutorialManager.Instance.LoockAround();
             hasShownLoock = true;
         }
-    }
-    private void MeleeEnemy()
-    {
-        StartCoroutine(ShowMelee());
-        meleeEnemy.SetActive(true);
-    }
-    private IEnumerator ShowMelee()
-    {
-        yield return new WaitForSeconds(5);
-        UITutorialManager.Instance.Melee();
     }
 }
