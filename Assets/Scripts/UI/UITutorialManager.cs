@@ -5,11 +5,13 @@ using UnityEngine;
 public class UITutorialManager : MonoBehaviour
 {
     [Header("Scripts")]
-    [SerializeField] GameObject cameraMovement;
     [SerializeField] public GameObject welcomeHint;
     [SerializeField] public GameObject loockAroundHint;
     [SerializeField] public GameObject movementHint;
-    [SerializeField] public GameObject jumpHint;
+    [SerializeField] public GameObject meleeHint;
+    public bool mouse = false;
+    public bool movement = false;
+    public bool enemyPrepare = false;
     public static UITutorialManager Instance { get; private set; }
     private void Awake()
     {
@@ -43,21 +45,21 @@ public class UITutorialManager : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         loockAroundHint.SetActive(false);
-        cameraMovement.SetActive(true);
+        mouse = true;
     }
     private IEnumerator DontShowMovement()
     {
         yield return new WaitForSeconds(6);
         movementHint.SetActive(false);
+        movement = true;    
     }
-    public void Jump()
+    public void Melee()
     {
-        jumpHint.SetActive(true);
-        StartCoroutine(DontShowJump());
+        meleeHint.SetActive(true);
     }
-    private IEnumerator DontShowJump()
+    private IEnumerator DontShowMelee()
     {
         yield return new WaitForSeconds(6);
-        jumpHint.SetActive(false);
+        meleeHint.SetActive(false);
     }
 }
