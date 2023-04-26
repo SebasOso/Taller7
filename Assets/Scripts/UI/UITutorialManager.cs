@@ -11,6 +11,7 @@ public class UITutorialManager : MonoBehaviour
     [SerializeField] public GameObject meleeHint;
     [SerializeField] public GameObject meleePrepare;
     [SerializeField] public GameObject meleeEnemy;
+    [SerializeField] public GameObject rangedEnemy;
     public bool mouse = false;
     public bool movement = false;
     public bool enemyPrepare = false;
@@ -81,5 +82,15 @@ public class UITutorialManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         meleeEnemy.SetActive(true);
+    }
+    public void RangedEnemy()
+    {
+        rangedEnemy.SetActive(true);
+        StartCoroutine(DontShowRanged());
+    }
+    private IEnumerator DontShowRanged()
+    {
+        yield return new WaitForSeconds(6);
+        rangedEnemy.SetActive(false);
     }
 }

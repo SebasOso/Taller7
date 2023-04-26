@@ -12,7 +12,6 @@ public class TutorialMeleeEnemie : MonoBehaviour
     [SerializeField] private float radio;
     [SerializeField] private bool playerDetected = false;
     [SerializeField] private LayerMask playerMask;
-    private bool hintShown = false;
     private EnemyHealth health;
     private bool canDamage;
     [SerializeField] private Transform player;

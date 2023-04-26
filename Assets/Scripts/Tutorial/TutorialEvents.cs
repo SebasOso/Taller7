@@ -7,6 +7,8 @@ public class TutorialEvents : MonoBehaviour
 {
     private bool hasShownLoock = false;
     public bool meleeEnemyIsDead;
+    [SerializeField] private GameObject rangedEnemy;
+    private bool hasShowRanged = false;
     public static TutorialEvents Instance { get; private set; }
     private void Awake()
     {
@@ -20,6 +22,10 @@ public class TutorialEvents : MonoBehaviour
         {
             ShowLoock();
         }
+        if(meleeEnemyIsDead && !hasShowRanged) 
+        {
+            ShowRangedEnemy();
+        }
     }
     private void ShowLoock()
     {
@@ -28,5 +34,10 @@ public class TutorialEvents : MonoBehaviour
             UITutorialManager.Instance.LoockAround();
             hasShownLoock = true;
         }
+    }
+    private void ShowRangedEnemy()
+    {
+        UITutorialManager.Instance.RangedEnemy();
+        rangedEnemy.SetActive(true);
     }
 }
