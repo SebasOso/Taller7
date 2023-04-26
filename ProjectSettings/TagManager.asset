@@ -7,6 +7,12 @@ TagManager:
   - hielo
   - ladder
   - CombatZone
+  - Enemy
+  - EnemyRangeHint
+  - climb
+  - Guides
+  - climbz
+  - climbx
   layers:
   - Default
   - TransparentFX
@@ -14,10 +20,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - EnemyBullet
+  - Enemy
+  - Ground
+  - Player
   - 
   - 
   - 

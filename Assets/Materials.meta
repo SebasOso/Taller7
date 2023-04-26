@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Library/PackageCache/com.unity.cinemachine@2.8.9/Editor/Experimental.meta
-guid: 351cec6faf82a1848a52b8fd995c6c25
-========
-guid: 52e2e7846ea1505428914aedcf13772f
->>>>>>>> SaveSystem:Assets/Materials.meta
+guid: fc8e42e75e063bd4e9dd3c686c95298f
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
