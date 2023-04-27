@@ -62,7 +62,6 @@ public class TutorialLife : MonoBehaviour
         {
             if (noLifes == true)
             {
-                Die();
             }
             else
             {
@@ -93,8 +92,6 @@ public class TutorialLife : MonoBehaviour
     {
         playerLifes--;
         UpdateLifes();
-        DataPersistenceManager.instance.SaveGame();
-        DataPersistenceManager.instance.LoadGame();
         if (playerLifes == 0)
         {
             noLifes = true;
@@ -156,13 +153,6 @@ public class TutorialLife : MonoBehaviour
             frontHealth.fillAmount = Mathf.Lerp(fillF, backHealth.fillAmount, percentComplete);
         }
     }
-    private void Die()
-    {
-        isDied = true;
-        SetDefault();
-        DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadSceneAsync("Level01");
-    }
     private void Invulnerability()
     {
         if (invincibilityCounter > 0)
@@ -192,23 +182,4 @@ public class TutorialLife : MonoBehaviour
         }
     }
 
-    public void LoadData(GameData data)
-    {
-        this.playerLifes = data.lifes;
-        if (data.checkPositions.Count > 0)
-        {
-            Vector3 lastCheckPosition = data.checkPositions[data.checkPositions.Count - 1];
-            this.transform.position = lastCheckPosition;
-        }
-    }
-
-    public void SaveData(GameData data)
-    {
-        data.lifes = this.playerLifes;
-    }
-    private void SetDefault()
-    {
-        this.playerLifes = 5;
-
-    }
 }

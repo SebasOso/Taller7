@@ -14,11 +14,11 @@ public class TutorialRangeEnemy : MonoBehaviour
     [SerializeField] private float radio;
     [SerializeField] private bool playerDetected = false;
     [SerializeField] private LayerMask playerMask;
-    private TutorialEnemyHealth health;
+    private TutorialEnemyRangeHealth health;
     [SerializeField] private Transform player;
     void Start()
     {
-        health = GetComponent<TutorialEnemyHealth>();
+        health = GetComponent<TutorialEnemyRangeHealth>();
         timeBetweenShots = startTimeBetweenShots;
     }
 
