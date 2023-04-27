@@ -4,36 +4,23 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] private string id;
-
-    [ContextMenu("Generate guid for id")]
-    private void GenerateGuid() 
-    {
-        id = System.Guid.NewGuid().ToString();
-    }
-
-    [SerializeField]private GameObject visual;
-    [SerializeField]private bool collected = false;
-
+    [SerializeField] private bool collected;
     public void LoadData(GameData data) 
     {
-        data.checksCollected.TryGetValue(id, out collected);
-        if (collected) 
-        {
-            visual.SetActive(false);
-        }
     }
 
     public void SaveData(GameData data) 
     {
-        if (data.checksCollected.ContainsKey(id))
+        if (LifeSystem.Instance.isDied)
         {
-            data.checksCollected.Remove(id);
+            data.checkPositions.Clear();
         }
-        data.checksCollected.Add(id, collected);
         if (collected)
         {
-            data.playerPosition = this.transform.position;
+            if (!data.checkPositions.Contains(this.transform.position))
+            {
+                data.checkPositions.Add(this.transform.position);
+            }
         }
     }
 
@@ -42,16 +29,8 @@ public class CheckPoint : MonoBehaviour, IDataPersistence
         if (other.CompareTag("Player"))
         {
             Debug.Log("TRIGER");
-            if (!collected)
-            {
-                CollectCoin();
-            }
+            collected = true;
+            DataPersistenceManager.instance.SaveGame();
         }
     }
-    private void CollectCoin() 
-    {
-        collected = true;
-        visual.SetActive(false);
-    }
-
 }

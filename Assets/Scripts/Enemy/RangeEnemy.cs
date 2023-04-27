@@ -7,29 +7,87 @@ public class RangeEnemy : MonoBehaviour
     [SerializeField] private float retreat_distance;
     [SerializeField] private float stop_distance;
     [SerializeField] private float speed;
-    [SerializeField] private float limitY;
-    private Transform player;      
+    private bool canTakeDamage = true;
+    private float timeBetweenShots;
+    [SerializeField] private float damageDelay;
+    [SerializeField] private float startTimeBetweenShots;
+    [SerializeField] private float radio;
+    [SerializeField] private bool playerDetected = false;
+    [SerializeField] private LayerMask playerMask;
+    private bool hintShown = false;
+    private EnemyHealth health;
+    [SerializeField]private Transform player;      
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        health = GetComponent<EnemyHealth>();
+        timeBetweenShots = startTimeBetweenShots;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) > stop_distance )
+        playerDetected = Physics.CheckSphere(transform.position, radio, playerMask);
+        if (playerDetected)
         {
-            Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            EnemyMovement();
+            Bullets();
+            //Debug.Log("HOY TE MUEREEEEEEEEEEEEEEES");
+            HurtEnemyRange();
+            Hint();
         }
-        else if (Vector3.Distance(transform.position, player.position) < stop_distance && Vector3.Distance(transform.position, player.position) > retreat_distance)
+    }
+
+    private void EnemyMovement()
+    {
+            if (Vector3.Distance(transform.position, player.position) > stop_distance)
+            {
+                Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            }
+            else if (Vector3.Distance(transform.position, player.position) < stop_distance && Vector3.Distance(transform.position, player.position) > retreat_distance)
+            {
+                transform.position = this.transform.position;
+            }
+            else if (Vector3.Distance(transform.position, player.position) <= retreat_distance)
+            {
+                Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, -speed * Time.deltaTime);
+            }
+    }
+
+    private void Bullets()
+    {
+        if (timeBetweenShots <= 0 && Player.Instance.isMoving)
         {
-            transform.position = this.transform.position;
+            Vector3 position = transform.position; 
+            EnemyBulletPool.Instance.Get().transform.position = this.transform.position;
+            timeBetweenShots = startTimeBetweenShots;
         }
-        else if (Vector3.Distance(transform.position, player.position) <= retreat_distance)
+        else
         {
-            Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, -speed * Time.deltaTime);
+            timeBetweenShots -= Time.deltaTime;
+        }
+    }
+    private void HurtEnemyRange()
+    {
+        if (!Player.Instance.isMoving && canTakeDamage)
+        {
+            health.TakeDamage(Player.Instance.stayDamage);
+            canTakeDamage = false;
+            StartCoroutine(ResetCanTakeDamage());
+        }
+    }
+    private IEnumerator ResetCanTakeDamage()
+    {
+        yield return new WaitForSeconds(damageDelay);
+        canTakeDamage = true;
+    }
+    private void Hint()
+    {
+        if (LifeSystem.Instance.health <= 2 && !hintShown)
+        {
+            UIManager.Instance.ShowHint();
+            hintShown = true;
         }
     }
 }
