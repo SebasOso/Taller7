@@ -9,7 +9,7 @@ public class TutorialTravelLobby : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Lobby");
+            SceneManager.LoadScene("PrincipalMenu");
         }
     }
 }
