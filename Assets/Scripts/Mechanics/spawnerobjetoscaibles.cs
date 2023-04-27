@@ -27,6 +27,11 @@ public class spawnerobjetoscaibles : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            Debug.Log(objetosCreados.Count.ToString());
+            Debug.Log(objetosactivos.Length.ToString());
+        }
         centro = this.transform.position;
         tamano = new Vector3(anchoArea * rangodeteccion, 200, altoArea * rangodeteccion);
         objetosDentro = Physics.OverlapBox(centro, tamano, Quaternion.identity);
@@ -36,11 +41,10 @@ public class spawnerobjetoscaibles : MonoBehaviour
             StartCoroutine(tiempoEntreSalida());
             boolsalida = true;
         }
-        if (boolcambio == false)
-        {
+       
             StartCoroutine(tiempocambio());
-            boolcambio = true;
-        }
+          
+        
 
     }
 
@@ -85,7 +89,7 @@ public class spawnerobjetoscaibles : MonoBehaviour
         {
             objetosCreados.Clear();
         }
-        boolcambio = false;
+   
         yield return new WaitForSeconds(1);
     }
 }

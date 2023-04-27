@@ -27,14 +27,17 @@ public class objetocaedaño : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.gameObject.tag=="Player")
-        {
-            player.HurtPlayer(dañoalpersonaje);
-        }
         if (collision.transform.gameObject.tag != "spawner")
         {
+           
+
+            if (collision.transform.gameObject.tag == "Player")
+            {
+                player.HurtPlayer(dañoalpersonaje);
+            }
             Destroy(this.gameObject);
         }
+        
        
     }
     void Update()
