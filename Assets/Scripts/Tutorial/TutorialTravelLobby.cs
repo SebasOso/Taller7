@@ -9,7 +9,8 @@ public class TutorialTravelLobby : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("PrincipalMenu");
+            DataPersistenceManager.instance.SaveGame();
+            SceneManager.LoadScene("Lobby");
         }
     }
 }
