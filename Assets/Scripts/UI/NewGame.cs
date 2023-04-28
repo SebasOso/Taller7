@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadLobby : MonoBehaviour
+public class NewGame : MonoBehaviour
 {
-    public void LoadLoby()
+    public void LoadTutorial()
     {
-        SceneManager.LoadScene("IntroCinematicToLobby");
+        SceneManager.LoadScene("IntroCinematic");
     }
 }

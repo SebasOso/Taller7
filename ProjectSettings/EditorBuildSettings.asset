@@ -9,24 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/PrincipalMenu.unity
     guid: 3c1c25496f1f69346acbbe4c2bc5d96f
   - enabled: 1
+    path: Assets/Scenes/IntroCinematicToLobby.unity
+    guid: 1249be29f27fa4b40b2e9ec8ea775b09
+  - enabled: 1
     path: Assets/Scenes/IntroCinematic.unity
     guid: f3b5c4c3063d93e4aa2d2c3b0c100de5
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 6ae47b2bc23a4a84dbb1aa21332e611a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: bd844678f3e33254b980169751a2016d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Jugador.unity
     guid: 99420860d63eb9d439d8b2f7e2bcac43
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level01Cinematic.unity
     guid: cc455c9d529a3d4499509048793d54e4
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level01.unity
     guid: d16a24f49c0a64a4ab940caff9e9e83e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/FinalCinematic.unity
     guid: ca74aafce3706d640897abd0a546c09f
   m_configObjects: {}
