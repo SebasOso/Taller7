@@ -32,6 +32,17 @@ public class Configurations : MonoBehaviour
             }
         }
     }
+    public void Pause()
+    {
+        if (isPaused)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
     public void CloseGame()
     {
         Application.Quit();

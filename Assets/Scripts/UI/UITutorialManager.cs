@@ -32,7 +32,7 @@ public class UITutorialManager : MonoBehaviour
     }
     private IEnumerator DontShowWelcome()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(3);
         welcomeHint.SetActive(false);
     }
     public void LoockAround()

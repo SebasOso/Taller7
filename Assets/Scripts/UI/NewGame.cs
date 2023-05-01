@@ -8,5 +8,6 @@ public class NewGame : MonoBehaviour
     public void LoadTutorial()
     {
         SceneManager.LoadScene("IntroCinematic");
+        DataPersistenceManager.instance.SaveGame();
     }
 }

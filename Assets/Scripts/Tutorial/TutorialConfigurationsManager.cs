@@ -20,7 +20,7 @@ public class TutorialConfigurationsManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) )
         {
             if (isPaused)
             {
@@ -30,6 +30,17 @@ public class TutorialConfigurationsManager : MonoBehaviour
             {
                 PauseGame();
             }
+        }
+    }
+    public void Pause()
+    {
+        if (isPaused)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
         }
     }
     public void CloseGame()
