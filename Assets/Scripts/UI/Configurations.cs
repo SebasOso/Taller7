@@ -9,6 +9,9 @@ public class Configurations : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject gameplay;
     [SerializeField] private GameObject checkMute;
+    [SerializeField] private List<GameObject> otherMenuOptions;
+    [SerializeField] private GameObject defaultMenuOption;
+    [SerializeField] private bool menuOpened = false;
     private bool isPaused;
     private void Awake()
     {
@@ -49,6 +52,15 @@ public class Configurations : MonoBehaviour
     }
     private void PauseGame()
     {
+        menuOpened = true;
+        if (menuOpened)
+        {
+            for(int i = 0; i < otherMenuOptions.Count; i++)
+            {
+                otherMenuOptions[i].SetActive(false);
+            }
+            defaultMenuOption.SetActive(true);
+        }
         gameplay.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -62,6 +74,7 @@ public class Configurations : MonoBehaviour
         Time.timeScale = 1.0f;
         Player.Instance.canJump = true;
         isPaused = false;
+        menuOpened = false;
     }
     public void StopMusic()
     {

@@ -9,7 +9,11 @@ public class TutorialConfigurationsManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject gameplay;
     [SerializeField] private GameObject checkMute;
+    [SerializeField] private GameObject defaultOption;
+    [SerializeField] private List<GameObject> otherMenuOptions;
     private bool isPaused;
+    private bool menuOpened;
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -49,6 +53,15 @@ public class TutorialConfigurationsManager : MonoBehaviour
     }
     private void PauseGame()
     {
+        menuOpened = true;
+        if (menuOpened)
+        {
+            for (int i = 0; i < otherMenuOptions.Count; i++)
+            {
+                otherMenuOptions[i].SetActive(false);
+            }
+            defaultOption.SetActive(true);
+        }
         gameplay.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -62,6 +75,7 @@ public class TutorialConfigurationsManager : MonoBehaviour
         Time.timeScale = 1.0f;
         TutorialMovement.Instance.canJump = true;
         isPaused = false;
+        menuOpened = false;
     }
     public void StopMusic()
     {
