@@ -12,7 +12,6 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private float radio;
     [SerializeField] private bool playerDetected = false;
     [SerializeField] private LayerMask playerMask;
-    private bool hintShown = false;
     private EnemyHealth health;
     private bool canDamage;
     [SerializeField]private Transform player;      
@@ -29,7 +28,6 @@ public class MeleeEnemy : MonoBehaviour
         {
             Debug.Log("Te vi gonorrea");
             EnemyMovement();
-            Hint();
         }
     }
 
@@ -44,14 +42,6 @@ public class MeleeEnemy : MonoBehaviour
             {
                 transform.position = this.transform.position;
             }
-    }
-    private void Hint()
-    {
-        if (LifeSystem.Instance.health <= 9 && !hintShown)
-        {
-            UIManager.Instance.ShowMeleeHint();
-            hintShown = true;
-        }
     }
     private void OnTriggerEnter(Collider other)
     {
