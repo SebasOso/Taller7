@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
     {
         DisableMenuButtoms();
         Debug.Log("Continue Game Clicked");
-        SceneManager.LoadSceneAsync("IntroCinematic");
+        SceneManager.LoadSceneAsync("IntroCinematicToLobby");
     }
     private void DisableMenuButtoms()
     {

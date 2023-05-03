@@ -8051,6 +8051,12 @@ MonoBehaviour:
   audioSource: {fileID: 989954559}
   gameplay: {fileID: 1885042045}
   checkMute: {fileID: 1043060598}
+  otherMenuOptions:
+  - {fileID: 801969533}
+  - {fileID: 1777672871}
+  - {fileID: 666202303}
+  defaultMenuOption: {fileID: 1869472301}
+  menuOpened: 0
 --- !u!4 &1749205649
 Transform:
   m_ObjectHideFlags: 0
