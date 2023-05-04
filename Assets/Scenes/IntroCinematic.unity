@@ -436,8 +436,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CutSceneToLobby, Assembly-CSharp
+      - m_Target: {fileID: 1130733304}
+        m_TargetAssemblyTypeName: CutSceneToTutorial, Assembly-CSharp
         m_MethodName: Skip
         m_Mode: 1
         m_Arguments:
