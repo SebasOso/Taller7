@@ -38,7 +38,6 @@ public class EnemyHealth : MonoBehaviour
         {
             Player.Instance.enemyIsDead = true;
             gameObject.SetActive(false);
-            TutorialEvents.Instance.meleeEnemyIsDead = true;
         }
     }
     public void TakeDamage(float damage)

@@ -1,10 +1,13 @@
 using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Guides : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI counterGuides;
+    private int counter = 0;
     public GameObject[] checkpoints; // Array de checkpoints
     private int currentCheckpoint = 0; // Índice del checkpoint actual
 
@@ -31,6 +34,8 @@ public class Guides : MonoBehaviour
 
                 // Incrementar el índice del checkpoint actual
                 currentCheckpoint++;
+                counter++;
+                counterGuides.SetText("" + counter);
 
                 // Verificar si se alcanzaron todos los checkpoints
                 if (currentCheckpoint >= checkpoints.Length)
