@@ -8,15 +8,22 @@ public class MeleeAtack : MonoBehaviour
     [SerializeField] private float playerDamage;
     [SerializeField] private float attackSpeed;
     private float lastAttackTime = -Mathf.Infinity;
-    
+    [SerializeField] GameObject meleeSign;
+    private bool isAttacking = false;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && Time.time >= lastAttackTime + 1f/ attackSpeed)
         {
+            isAttacking = true;
             Attack();
             lastAttackTime = Time.time;
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isAttacking = false;
+        }
+        meleeSign.SetActive(isAttacking);
     }
     private void Attack()
     {
