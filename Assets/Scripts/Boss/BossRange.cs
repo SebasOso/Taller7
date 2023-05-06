@@ -4,7 +4,26 @@ using UnityEngine;
 
 public class BossRange : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Animator animator;
+    public Boss boss;
+    public int melee;
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Debug.Log("Te viiiiiiiiiiiiiiiiiiiiiiiiiii soy el bossssssssssss");
+            melee = Random.Range(0, 1);
+            switch(melee)
+            {
+                case 0:
+                    animator.SetFloat("skills", 0);
+                break;
+            }
+            animator.SetBool("attack", true);
+            boss.isAttacking = true;
+            GetComponent<CapsuleCollider>().enabled = false;
+        }
+    }
     void Start()
     {
         
