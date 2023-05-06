@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Guides : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI counterGuides;
+    [SerializeField] List<TextMeshProUGUI> counterGuides;
     private int counter = 0;
     public GameObject[] checkpoints; // Array de checkpoints
     private int currentCheckpoint = 0; // Índice del checkpoint actual
@@ -35,7 +35,10 @@ public class Guides : MonoBehaviour
                 // Incrementar el índice del checkpoint actual
                 currentCheckpoint++;
                 counter++;
-                counterGuides.SetText("" + counter);
+                for (int i = 0;  i < counterGuides.Count; i++)
+                {
+                    counterGuides[i].SetText("" + counter);
+                }
 
                 // Verificar si se alcanzaron todos los checkpoints
                 if (currentCheckpoint >= checkpoints.Length)
