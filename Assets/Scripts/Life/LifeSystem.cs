@@ -43,6 +43,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private bool noLifes;
     //[SerializeField] private TextMeshProUGUI lifes;
     public static LifeSystem Instance { get; private set; }
+    public Animator anim;
     private void Awake()
     {
         //SaveSystem.Instance.Load();
@@ -73,6 +74,10 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
                 RestLifes();
                 health = 10;
             }
+        }
+        else
+        {
+            anim.SetBool("alive", true);
         }
         Invulnerability();
     }
@@ -109,6 +114,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     {
         if (invincibilityCounter <= 0)
         {
+            anim.SetTrigger("harm");
             health -= playerDamaged;
             lerpTimer = 0f;
             invincibilityCounter = invincibilityLength;
@@ -163,6 +169,8 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private void Die()
     {
         isDied = true;
+        anim.SetBool("alive", false);
+        anim.SetTrigger("die");
         SetDefault();
         DataPersistenceManager.instance.SaveGame();
         SceneManager.LoadSceneAsync("Level01");

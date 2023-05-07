@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
-
+    public float idlebreakerTime;
     Vector3 moveDirection;
-
+    private Vector2 wetInputVector;
     Rigidbody rb;
     [Header("Jump")]
     public bool canJump = true;
@@ -47,10 +47,23 @@ public class Player : MonoBehaviour
     public float groundDistance = 0.4f;
     //Events
     public UnityEvent OnPlayerMove;
+    public Animator anim;
 
     //Animator
-
-    public Animator animator;
+    private float moveValue;
+    private float breakerCount;
+    private bool boolarriba = false;
+    private bool boolabajo = false;
+    private bool boolderecha = false;
+    private bool boolizquierda = false;
+    private bool boolarribaderecha = false;
+    private bool boolarribaizquierda = false;
+    private bool boolabajoderecha = false;
+    private bool boolabajoizquierda = false;
+    private Transform transforminicial;
+    public GameObject personajeanim;
+    private float timeSinceLastKey = 0f;
+    private bool waitingForKey = false;
     public static Player Instance { get; private set; }
     private void Awake()
     {
@@ -58,12 +71,15 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
+        transforminicial = personajeanim.transform;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
     }
 
     private void Update()
     {
+        BreakerCounter();
         JumpSystem();
         MovingCheck();
         MyInput();
@@ -80,7 +96,24 @@ public class Player : MonoBehaviour
             OnPlayerMove.Invoke();
             transform.hasChanged = false;
         }
+        if (rb.velocity.magnitude > 1)
+        {
+            anim.SetBool("walking", true);
+
+        }
+        else
+        {
+            anim.SetBool("walking", false);
+
+        }
+  
+        direccionpersonaje();
+        checkdirectionanim();
+
+       
+
     }
+    
 
     private void FixedUpdate()
     {
@@ -93,17 +126,287 @@ public class Player : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
     }
 
+    private void BreakerCounter()
+    {
+        if (moveValue != 0) breakerCount = 0;
+        breakerCount += Time.deltaTime;
+        if (breakerCount >= idlebreakerTime)
+        {
+            anim.SetTrigger("breaker");
+            breakerCount = -idlebreakerTime;
+        }
+    }
+    private float MoveDetector(float x, float y)
+    {
+        Vector2 movement = new Vector2(x, y);
+        float speed = 0;
+        speed = movement.magnitude;
+        return speed;
+    }
+
+
+    private void direccionpersonaje()
+    {
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            boolarriba = true;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+}
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            boolarriba = false;
+            boolabajo = true;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+        }
+       
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = true;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+        }
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = true;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+        }
+
+        if ((Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.D)) || (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.RightArrow)))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = true;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+        }
+        if ((Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.A)) || (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.LeftArrow)))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = true;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+        }
+        if ((Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.D)) || (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.RightArrow)))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = true;
+            boolabajoizquierda = false;
+        }
+        if ((Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.A)) || (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.LeftArrow)))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = true;
+        }
+
+
+        if(boolarriba==true && (Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow)))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = true;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+        }
+        if (boolarriba == true && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = true;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+        }
+
+        if (boolabajo == true && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = true;
+            boolabajoizquierda = false;
+        }
+        if (boolabajo == true && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)))
+        {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = true;
+        }
+
+        if(boolderecha==true && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
+            {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = true;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+
+        }
+        if (boolderecha == true && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
+            {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = true;
+            boolabajoizquierda = false;
+
+        }
+        if (boolizquierda == true && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
+            {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = true;
+            boolabajoderecha = false;
+            boolabajoizquierda = false;
+
+        }
+        if (boolizquierda == true && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
+            {
+            boolarriba = false;
+            boolabajo = false;
+            boolderecha = false;
+            boolizquierda = false;
+            boolarribaderecha = false;
+            boolarribaizquierda = false;
+            boolabajoderecha = false;
+            boolabajoizquierda = true;
+
+        }
+    }
+
+
+    private void checkdirectionanim()
+    {
+        if(boolarriba==true)
+        {
+
+            Vector3 nuevarotacion =  new Vector3(0, 0, 0);
+            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
+        }
+        if (boolabajo == true)
+        {
+
+            Vector3 nuevarotacion = new Vector3(0, 180, 0);
+            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
+        }
+
+        if (boolderecha == true)
+        {
+
+            Vector3 nuevarotacion = new Vector3(0, 90,0 );
+            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
+        }
+        if (boolizquierda == true)
+        {
+
+            Vector3 nuevarotacion =  new Vector3(0, 270, 0);
+            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
+        }
+
+        if (boolarribaderecha==true)
+        {
+
+            Vector3 nuevarotacion =  new Vector3(0, 45, 0);
+            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
+        }
+        if (boolarribaizquierda == true )
+        {
+
+            Vector3 nuevarotacion =  new Vector3(0, 315,0 );
+            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
+        }
+        if (boolabajoderecha == true )
+        {
+
+            Vector3 nuevarotacion =  new Vector3(0, 135, 0);
+            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
+        }
+        if (boolabajoizquierda == true )
+        {
+
+            Vector3 nuevarotacion =  new Vector3(0, 225,0 );
+            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
+        }
+    }
     private void MovePlayer()
     {
+        
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // on ground
-        if(isGrounded)
+        if (isGrounded)
+        {
+           
+            
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
 
+       
+          
+        }
         // in air
-        else if(!isGrounded)
+        else if (!isGrounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
             rb.AddForce(gravityDirection * gravityForce, ForceMode.Acceleration);
     }
@@ -121,7 +424,14 @@ public class Player : MonoBehaviour
     }
     private void Jump(float jumpForce)
     {
+        anim.SetTrigger("jump");
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    public IEnumerator cortinaJump(float jump)
+    {
+        yield return new WaitForSeconds(0.8f);
+        Jump(jump);
     }
 
     private void JumpSystem()
