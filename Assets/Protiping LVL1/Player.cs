@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
         if (rb.velocity.magnitude > 1)
         {
             anim.SetBool("walking", true);
-
+            anim.SetTrigger("walk");
         }
         else
         {
