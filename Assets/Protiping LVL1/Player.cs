@@ -52,18 +52,9 @@ public class Player : MonoBehaviour
     //Animator
     private float moveValue;
     private float breakerCount;
-    private bool boolarriba = false;
-    private bool boolabajo = false;
-    private bool boolderecha = false;
-    private bool boolizquierda = false;
-    private bool boolarribaderecha = false;
-    private bool boolarribaizquierda = false;
-    private bool boolabajoderecha = false;
-    private bool boolabajoizquierda = false;
-    private Transform transforminicial;
+    
     public GameObject personajeanim;
-    private float timeSinceLastKey = 0f;
-    private bool waitingForKey = false;
+
     public static Player Instance { get; private set; }
     private void Awake()
     {
@@ -71,7 +62,7 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        transforminicial = personajeanim.transform;
+     
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -107,8 +98,7 @@ public class Player : MonoBehaviour
 
         }
   
-        direccionpersonaje();
-        checkdirectionanim();
+    
 
        
 
@@ -145,250 +135,7 @@ public class Player : MonoBehaviour
     }
 
 
-    private void direccionpersonaje()
-    {
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            boolarriba = true;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-}
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            boolarriba = false;
-            boolabajo = true;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-        }
-       
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = true;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-        }
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = true;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-        }
-
-        if ((Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.D)) || (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.RightArrow)))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = true;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-        }
-        if ((Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.A)) || (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.LeftArrow)))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = true;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-        }
-        if ((Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.D)) || (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.RightArrow)))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = true;
-            boolabajoizquierda = false;
-        }
-        if ((Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.A)) || (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.LeftArrow)))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = true;
-        }
-
-
-        if(boolarriba==true && (Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow)))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = true;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-        }
-        if (boolarriba == true && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = true;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-        }
-
-        if (boolabajo == true && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = true;
-            boolabajoizquierda = false;
-        }
-        if (boolabajo == true && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)))
-        {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = true;
-        }
-
-        if(boolderecha==true && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
-            {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = true;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-
-        }
-        if (boolderecha == true && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
-            {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = true;
-            boolabajoizquierda = false;
-
-        }
-        if (boolizquierda == true && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
-            {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = true;
-            boolabajoderecha = false;
-            boolabajoizquierda = false;
-
-        }
-        if (boolizquierda == true && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
-            {
-            boolarriba = false;
-            boolabajo = false;
-            boolderecha = false;
-            boolizquierda = false;
-            boolarribaderecha = false;
-            boolarribaizquierda = false;
-            boolabajoderecha = false;
-            boolabajoizquierda = true;
-
-        }
-    }
-
-
-    private void checkdirectionanim()
-    {
-        if(boolarriba==true)
-        {
-
-            Vector3 nuevarotacion =  new Vector3(0, 0, 0);
-            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
-        }
-        if (boolabajo == true)
-        {
-
-            Vector3 nuevarotacion = new Vector3(0, 180, 0);
-            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
-        }
-
-        if (boolderecha == true)
-        {
-
-            Vector3 nuevarotacion = new Vector3(0, 90,0 );
-            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
-        }
-        if (boolizquierda == true)
-        {
-
-            Vector3 nuevarotacion =  new Vector3(0, 270, 0);
-            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
-        }
-
-        if (boolarribaderecha==true)
-        {
-
-            Vector3 nuevarotacion =  new Vector3(0, 45, 0);
-            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
-        }
-        if (boolarribaizquierda == true )
-        {
-
-            Vector3 nuevarotacion =  new Vector3(0, 315,0 );
-            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
-        }
-        if (boolabajoderecha == true )
-        {
-
-            Vector3 nuevarotacion =  new Vector3(0, 135, 0);
-            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
-        }
-        if (boolabajoizquierda == true )
-        {
-
-            Vector3 nuevarotacion =  new Vector3(0, 225,0 );
-            personajeanim.transform.rotation = Quaternion.Euler(nuevarotacion);
-        }
-    }
+ 
     private void MovePlayer()
     {
         
