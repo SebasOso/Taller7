@@ -48,8 +48,13 @@ public class TutorialMovement : MonoBehaviour
     public UnityEvent OnPlayerMove;
 
     //Animator
+    public Animator anim;
 
-    public Animator animator;
+    //Animator
+    private float moveValue;
+    private float breakerCount;
+    public float idlebreakerTime;
+    public GameObject personajeanim;
     public static TutorialMovement Instance { get; private set; }
     private void Awake()
     {
@@ -65,6 +70,7 @@ public class TutorialMovement : MonoBehaviour
     {
         if(UITutorialManager.Instance.movement)
         {
+            BreakerCounter();
             JumpSystem();
             MovingCheck();
             MyInput();
@@ -80,6 +86,16 @@ public class TutorialMovement : MonoBehaviour
             {
                 OnPlayerMove.Invoke();
                 transform.hasChanged = false;
+            }
+            if (rb.velocity.magnitude > 1)
+            {
+                anim.SetBool("walking", true);
+                anim.SetTrigger("walk");
+            }
+            else
+            {
+                anim.SetBool("walking", false);
+
             }
         }
         else if(UITutorialManager.Instance.movement == false)
@@ -127,6 +143,7 @@ public class TutorialMovement : MonoBehaviour
     }
     private void Jump(float jumpForce)
     {
+        anim.SetTrigger("jump");
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
@@ -172,4 +189,22 @@ public class TutorialMovement : MonoBehaviour
             // Debug.Log("Player stop moving");
         }
     }
+    private void BreakerCounter()
+    {
+        if (moveValue != 0) breakerCount = 0;
+        breakerCount += Time.deltaTime;
+        if (breakerCount >= idlebreakerTime)
+        {
+            anim.SetTrigger("breaker");
+            breakerCount = -idlebreakerTime;
+        }
+    }
+    private float MoveDetector(float x, float y)
+    {
+        Vector2 movement = new Vector2(x, y);
+        float speed = 0;
+        speed = movement.magnitude;
+        return speed;
+    }
+
 }

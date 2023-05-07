@@ -97,14 +97,7 @@ public class Player : MonoBehaviour
             anim.SetBool("walking", false);
 
         }
-  
-    
-
-       
-
     }
-    
-
     private void FixedUpdate()
     {
         MovePlayer();

@@ -10,6 +10,7 @@ public class TutorialMelee : MonoBehaviour
     private float lastAttackTime = -Mathf.Infinity;
     [SerializeField] GameObject meleeSign;
     private bool isAttacking = false;
+    [SerializeField] private Animator anim;
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +28,7 @@ public class TutorialMelee : MonoBehaviour
     }
     private void Attack()
     {
+        anim.SetTrigger("attack");
         Collider[] enemiesCollider = Physics.OverlapSphere(transform.position, attackRange);
         foreach (Collider enemies in enemiesCollider)
         {
