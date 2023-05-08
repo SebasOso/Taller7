@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5993728826036962297, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_Name
-      value: Subida_Izquierda (33)
+      value: PALOS
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_RootOrder
@@ -49,15 +49,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.024805069
+      value: -1.0419474
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.111
+      value: 7.6375284
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -42.82
+      value: -17.639263
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,15 +65,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6369726156475963715, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -103,5 +103,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6912859735020469910, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
+    - {fileID: 6912859735020469911, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
+    - {fileID: 3446327327696683007, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b7c75b431110f4a4793d1a3dd2e912db, type: 3}

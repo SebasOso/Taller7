@@ -21,6 +21,9 @@ public class MovePlatforms : MonoBehaviour
     private bool moveLeft = false;
 
     [SerializeField]
+    private bool PlayerFollow = false;
+
+    [SerializeField]
     private Ease easeType = Ease.Linear;
 
     [SerializeField]
@@ -39,5 +42,19 @@ public class MovePlatforms : MonoBehaviour
         transform.DOMove(destinationPosition, moveDuration)
             .SetEase(easeType)
             .SetLoops(-1, loopType);
+    }
+
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (PlayerFollow == true) 
+        { 
+        col.gameObject.transform.SetParent(gameObject.transform, true);
+        Debug.Log("Hello World");
+        }
+    }
+    void OnCollisionExit(Collision col)
+    {
+        col.gameObject.transform.parent = null;
     }
 }
