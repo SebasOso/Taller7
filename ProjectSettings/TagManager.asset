@@ -13,6 +13,7 @@ TagManager:
   - Guides
   - climbz
   - climbx
+  - cuerpo
   layers:
   - Default
   - TransparentFX

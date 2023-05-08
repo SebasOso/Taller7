@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public LayerMask whatIsGround;
 
     public Transform orientation;
+    private float threshold = 0.9f;
 
     float horizontalInput;
     float verticalInput;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
     //Events
     public UnityEvent OnPlayerMove;
     public Animator anim;
-
+   private float animationTime;
     //Animator
     private float moveValue;
     private float breakerCount;
@@ -97,7 +98,22 @@ public class Player : MonoBehaviour
             anim.SetBool("walking", false);
 
         }
+
+
+        animationTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime % 1;
+        anim.SetFloat("animationTime", animationTime);
+
+        // Si el personaje ya no está caminando y se ha superado el umbral de tiempo,
+        // se activa la transición a "Jump".
+        if (anim.GetBool("walking") && animationTime > threshold)
+        {
+            anim.SetTrigger("jump");
+        }
+
+
     }
+    
+
     private void FixedUpdate()
     {
         MovePlayer();
@@ -164,7 +180,12 @@ public class Player : MonoBehaviour
     }
     private void Jump(float jumpForce)
     {
-        anim.SetTrigger("jump");
+       
+        
+            anim.SetTrigger("jump");
+        
+      
+        
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 

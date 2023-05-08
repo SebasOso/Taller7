@@ -44,6 +44,8 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     //[SerializeField] private TextMeshProUGUI lifes;
     public static LifeSystem Instance { get; private set; }
     public Animator anim;
+    public Player player;
+    private bool transition;
     private void Awake()
     {
         //SaveSystem.Instance.Load();
@@ -54,6 +56,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
 
     void Start()
     {
+    
         UpdateLifes();
         isAlive = true;
     }
@@ -71,14 +74,14 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
             }
             else
             {
-                RestLifes();
-                health = 10;
+                if (transition == false)
+                {
+                    transition = true;
+                    RestLifes();
+                }
             }
         }
-        else
-        {
-            anim.SetBool("alive", true);
-        }
+      
         Invulnerability();
     }
     public void UpdateLifes()
@@ -100,10 +103,12 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     }
     private void RestLifes()
     {
+
+        
+     
         playerLifes--;
-        UpdateLifes();
-        DataPersistenceManager.instance.SaveGame();
-        DataPersistenceManager.instance.LoadGame();
+       
+        StartCoroutine(LoadCoroutine());
         if (playerLifes == 0)
         {
             noLifes = true;
@@ -112,15 +117,28 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
 
     public void HurtPlayer(int playerDamaged)
     {
-        if (invincibilityCounter <= 0)
+        if (health>0)
         {
-            anim.SetTrigger("harm");
-            health -= playerDamaged;
-            lerpTimer = 0f;
-            invincibilityCounter = invincibilityLength;
-            PlayerBody.material.color = DamageSkinColor;
-            Physics.IgnoreLayerCollision(10, 11, true);
-            flashCounter = flashLength;
+            if (invincibilityCounter <= 0)
+        {
+                if (health > 1)
+                {
+                    anim.SetTrigger("harm");
+                }
+
+                health -= playerDamaged;
+                lerpTimer = 0f;
+                invincibilityCounter = invincibilityLength;
+                for (int i = 0; i < Player.transform.childCount; i++)
+                {
+                    if (Player.transform.GetChild(i).tag == "cuerpo")
+                    {
+                        Player.transform.GetChild(i).GetComponent<Renderer>().material.color = DamageSkinColor;
+                    }
+                }
+                Physics.IgnoreLayerCollision(10, 11, true);
+                flashCounter = flashLength;
+            }
         }
     }
 
@@ -169,11 +187,27 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private void Die()
     {
         isDied = true;
-        anim.SetBool("alive", false);
-        anim.SetTrigger("die");
+        
         SetDefault();
         DataPersistenceManager.instance.SaveGame();
+     
         SceneManager.LoadSceneAsync("Level01");
+    }
+
+  
+    private IEnumerator LoadCoroutine()
+    {
+        player.enabled = false;
+        anim.SetBool("alive", false);
+        anim.SetTrigger("die");
+        yield return new WaitForSeconds(5f);
+        health = playerHealth;
+        UpdateLifes();
+        anim.SetBool("alive", true);
+        player.enabled = true;
+        DataPersistenceManager.instance.SaveGame();
+        DataPersistenceManager.instance.LoadGame();
+        transition = false;
     }
     private void Invulnerability()
     {
@@ -198,7 +232,13 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
 
                     playerParts[i].enabled = true;
                 }
-                PlayerBody.material.color = defaultSkinColor;
+                for (int i = 0; i < Player.transform.childCount; i++)
+                {
+                    if (Player.transform.GetChild(i).tag == "cuerpo")
+                    {
+                        Player.transform.GetChild(i).GetComponent<Renderer>().material.color = defaultSkinColor;
+                    }
+                }
                 Physics.IgnoreLayerCollision(10, 11, false);
             }
         }
