@@ -88,29 +88,25 @@ public class Player : MonoBehaviour
             OnPlayerMove.Invoke();
             transform.hasChanged = false;
         }
-        if (rb.velocity.magnitude > 1)
+
+        // Check if player is grounded and not jumping
+        if (isGrounded)
         {
-            anim.SetBool("walking", true);
-            anim.SetTrigger("walk");
+            // Check if player is walking
+            if (rb.velocity.magnitude > 1)
+            {
+                anim.SetBool("walking", true);
+                anim.SetTrigger("walk");
+            }
+            else
+            {
+                anim.SetBool("walking", false);
+            }
         }
-        else
+        else // Player is not grounded
         {
-            anim.SetBool("walking", false);
-
+            anim.SetBool("walking", false); // Set walking parameter to false
         }
-
-
-        animationTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime % 1;
-        anim.SetFloat("animationTime", animationTime);
-
-        // Si el personaje ya no está caminando y se ha superado el umbral de tiempo,
-        // se activa la transición a "Jump".
-        if (anim.GetBool("walking") && animationTime > threshold)
-        {
-            anim.SetTrigger("jump");
-        }
-
-
     }
     
 
@@ -153,13 +149,8 @@ public class Player : MonoBehaviour
 
         // on ground
         if (isGrounded)
-        {
-           
-            
+        { 
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
-       
-          
         }
         // in air
         else if (!isGrounded)
@@ -179,17 +170,11 @@ public class Player : MonoBehaviour
         }
     }
     private void Jump(float jumpForce)
-    {
-       
-        
-            anim.SetTrigger("jump");
-        
-      
-        
+    {    
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
-    public IEnumerator cortinaJump(float jump)
+    public IEnumerator CortinaJump(float jump)
     {
         yield return new WaitForSeconds(0.8f);
         Jump(jump);
@@ -208,12 +193,14 @@ public class Player : MonoBehaviour
             {
                 if (isGrounded)
                 {
+                    anim.SetTrigger("jump");
                     Jump(jumpForce);
                     canDoubleJump = true;
                     jumpDelayTimer = jumpDelay;
                 }
                 else if (canDoubleJump)
                 {
+                    anim.SetTrigger("jump");
                     Jump(doubleJumpForce);
                     canDoubleJump = false;
                 }

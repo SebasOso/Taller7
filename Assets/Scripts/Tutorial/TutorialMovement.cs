@@ -87,15 +87,24 @@ public class TutorialMovement : MonoBehaviour
                 OnPlayerMove.Invoke();
                 transform.hasChanged = false;
             }
-            if (rb.velocity.magnitude > 1)
-            {
-                anim.SetBool("walking", true);
-                anim.SetTrigger("walk");
-            }
-            else
-            {
-                anim.SetBool("walking", false);
 
+            // Check if player is grounded and not jumping
+            if (isGrounded)
+            {
+                // Check if player is walking
+                if (rb.velocity.magnitude > 1)
+                {
+                    anim.SetBool("walking", true);
+                    anim.SetTrigger("walk");
+                }
+                else
+                {
+                    anim.SetBool("walking", false);
+                }
+            }
+            else // Player is not grounded
+            {
+                anim.SetBool("walking", false); // Set walking parameter to false
             }
         }
         else if(UITutorialManager.Instance.movement == false)
@@ -143,7 +152,6 @@ public class TutorialMovement : MonoBehaviour
     }
     private void Jump(float jumpForce)
     {
-        anim.SetTrigger("jump");
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
@@ -160,12 +168,14 @@ public class TutorialMovement : MonoBehaviour
             {
                 if (isGrounded)
                 {
+                    anim.SetTrigger("jump");
                     Jump(jumpForce);
                     canDoubleJump = true;
                     jumpDelayTimer = jumpDelay;
                 }
                 else if (canDoubleJump)
                 {
+                    anim.SetTrigger("jump");
                     Jump(doubleJumpForce);
                     canDoubleJump = false;
                 }

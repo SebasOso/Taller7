@@ -38,6 +38,7 @@ public class TutorialLife : MonoBehaviour
     private Color32 DamageSkinColor = new Color32(255, 175, 175, 255);
     private bool noLifes;
     //[SerializeField] private TextMeshProUGUI lifes;
+    [SerializeField] private Animator anim;
     public static TutorialLife Instance { get; private set; }
     private void Awake()
     {
@@ -100,14 +101,24 @@ public class TutorialLife : MonoBehaviour
 
     public void HurtPlayer(int playerDamaged)
     {
-        if (invincibilityCounter <= 0)
+        if (health > 0)
         {
-            health -= playerDamaged;
-            lerpTimer = 0f;
-            invincibilityCounter = invincibilityLength;
-            PlayerBody.material.color = DamageSkinColor;
-            Physics.IgnoreLayerCollision(10, 11, true);
-            flashCounter = flashLength;
+            anim.SetTrigger("harm");
+            if (invincibilityCounter <= 0)
+            {
+                health -= playerDamaged;
+                lerpTimer = 0f;
+                invincibilityCounter = invincibilityLength;
+                for (int i = 0; i < Player.transform.childCount; i++)
+                {
+                    if (Player.transform.GetChild(i).tag == "cuerpo")
+                    {
+                        Player.transform.GetChild(i).GetComponent<Renderer>().material.color = DamageSkinColor;
+                    }
+                }
+                Physics.IgnoreLayerCollision(10, 11, true);
+                flashCounter = flashLength;
+            }
         }
     }
 
@@ -176,10 +187,15 @@ public class TutorialLife : MonoBehaviour
 
                     playerParts[i].enabled = true;
                 }
-                PlayerBody.material.color = defaultSkinColor;
+                for (int i = 0; i < Player.transform.childCount; i++)
+                {
+                    if (Player.transform.GetChild(i).tag == "cuerpo")
+                    {
+                        Player.transform.GetChild(i).GetComponent<Renderer>().material.color = defaultSkinColor;
+                    }
+                }
                 Physics.IgnoreLayerCollision(10, 11, false);
             }
         }
     }
-
 }

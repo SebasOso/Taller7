@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 10796492}
   m_Layer: 0
   m_Name: brazo d.004
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 54909857}
   m_Layer: 0
   m_Name: pierna i
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6744,7 +6744,7 @@ GameObject:
   - component: {fileID: 141679543}
   m_Layer: 0
   m_Name: brazo i.004
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8091,7 +8091,7 @@ GameObject:
   - component: {fileID: 241667926}
   m_Layer: 0
   m_Name: ORG-spine.001
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8785,7 +8785,7 @@ GameObject:
   - component: {fileID: 298665284}
   m_Layer: 0
   m_Name: cabeza
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9783,6 +9783,7 @@ MonoBehaviour:
   defaultSkinColor:
     serializedVersion: 2
     rgba: 4294967295
+  anim: {fileID: 1182477320}
 --- !u!114 &353167524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9905,7 +9906,7 @@ GameObject:
   - component: {fileID: 366438507}
   m_Layer: 0
   m_Name: ORG-thigh.L
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10363,7 +10364,7 @@ GameObject:
   - component: {fileID: 407654784}
   m_Layer: 0
   m_Name: ORG-thigh.R
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16270,7 +16271,7 @@ GameObject:
   - component: {fileID: 796225945}
   m_Layer: 0
   m_Name: ORG-pelvis.R
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17887,7 +17888,7 @@ GameObject:
   - component: {fileID: 987728082}
   m_Layer: 0
   m_Name: brazo i.005
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18708,7 +18709,7 @@ GameObject:
   - component: {fileID: 1014626419}
   m_Layer: 0
   m_Name: cerebro
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27767,7 +27768,7 @@ GameObject:
   - component: {fileID: 1279419028}
   m_Layer: 0
   m_Name: torso
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27908,7 +27909,7 @@ GameObject:
   - component: {fileID: 1279464370}
   m_Layer: 0
   m_Name: ORG-spine
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30375,7 +30376,7 @@ GameObject:
   - component: {fileID: 1464835807}
   m_Layer: 0
   m_Name: pierna d
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30708,7 +30709,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467600158}
-  m_LocalRotation: {x: 0.52720916, y: 0.000000022285787, z: -0.0000000138269725, w: 0.8497356}
+  m_LocalRotation: {x: 0.5272091, y: 0.000000035619138, z: -0.000000022099504, w: 0.8497356}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32312,7 +32313,7 @@ GameObject:
   - component: {fileID: 1577184852}
   m_Layer: 0
   m_Name: plano Ojos
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40683,7 +40684,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753994649}
-  m_LocalRotation: {x: 0.40171155, y: -0.000000022283793, z: 0.000000009775047, w: 0.91576624}
+  m_LocalRotation: {x: 0.40171155, y: -0.000000022283794, z: 0.000000009775049, w: 0.91576624}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -42368,7 +42369,7 @@ GameObject:
   - component: {fileID: 1843128552}
   m_Layer: 0
   m_Name: cuernos
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46026,7 +46027,7 @@ GameObject:
   - component: {fileID: 2067267772}
   m_Layer: 0
   m_Name: brazo d.005
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47024,7 +47025,7 @@ GameObject:
   - component: {fileID: 2124703675}
   m_Layer: 0
   m_Name: ORG-pelvis.L
-  m_TagString: Untagged
+  m_TagString: cuerpo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47844,7 +47845,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 512
-  player: {fileID: 0}
+  player: {fileID: 1182477319}
 --- !u!114 &4183003717759186925
 MonoBehaviour:
   m_ObjectHideFlags: 0

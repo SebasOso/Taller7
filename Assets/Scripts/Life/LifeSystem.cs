@@ -121,11 +121,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
         {
             if (invincibilityCounter <= 0)
         {
-                if (health > 1)
-                {
-                    anim.SetTrigger("harm");
-                }
-
+                anim.SetTrigger("harm");
                 health -= playerDamaged;
                 lerpTimer = 0f;
                 invincibilityCounter = invincibilityLength;
