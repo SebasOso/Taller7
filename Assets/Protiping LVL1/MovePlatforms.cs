@@ -50,7 +50,7 @@ public class MovePlatforms : MonoBehaviour
         if (PlayerFollow == true) 
         { 
         col.gameObject.transform.SetParent(gameObject.transform, true);
-        Debug.Log("Hello World");
+
         }
     }
     void OnCollisionExit(Collision col)
