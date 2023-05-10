@@ -93,7 +93,7 @@ public class UITutorialManager : MonoBehaviour
     }
     private IEnumerator DontShowRanged()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(8);
         rangedEnemy.SetActive(false);
     }
     public void Pause()

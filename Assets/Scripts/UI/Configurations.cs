@@ -97,4 +97,10 @@ public class Configurations : MonoBehaviour
     {
         SceneManager.LoadScene("Lobby");
     }
+    public void Save()
+    {
+        Debug.Log("GUARDADO");
+        DataPersistenceManager.instance.SaveGame();
+    }
+
 }
