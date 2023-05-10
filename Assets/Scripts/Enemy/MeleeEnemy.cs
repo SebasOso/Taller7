@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MeleeEnemy : MonoBehaviour
 {
@@ -14,7 +15,15 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerMask;
     private EnemyHealth health;
     private bool canDamage;
-    [SerializeField]private Transform player;      
+    [SerializeField]private Transform player;
+    public UnityEvent OnDesesperation;
+    [SerializeField] public bool isDesesperation;
+    [SerializeField] private float effectDuration = 3.0f;
+    public static MeleeEnemy Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         health = GetComponent<EnemyHealth>();
@@ -29,8 +38,11 @@ public class MeleeEnemy : MonoBehaviour
             Debug.Log("Te vi gonorrea");
             EnemyMovement();
         }
+        if(isDesesperation)
+        {
+            OnDesesperation.Invoke();
+        }
     }
-
     private void EnemyMovement()
     {
             if (Vector3.Distance(transform.position, player.position) > stop_distance)
@@ -49,6 +61,7 @@ public class MeleeEnemy : MonoBehaviour
         {
             LifeSystem.Instance.HurtPlayer(meleeDamage);
             canDamage = false;
+            Player.Instance.onDesesperation = true;
             StartCoroutine(DamageDelay());
         }
     }
@@ -57,5 +70,5 @@ public class MeleeEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(damageDelay);
         canDamage = true;
-    }
+    }   
 }

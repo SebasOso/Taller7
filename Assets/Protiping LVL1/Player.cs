@@ -53,7 +53,8 @@ public class Player : MonoBehaviour
     //Animator
     private float moveValue;
     private float breakerCount;
-    
+    public int desesperation;
+    [SerializeField] public bool onDesesperation = false;
     public GameObject personajeanim;
 
     public static Player Instance { get; private set; }
@@ -63,10 +64,8 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-     
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
     }
 
     private void Update()
@@ -108,13 +107,18 @@ public class Player : MonoBehaviour
             anim.SetBool("walking", false); // Set walking parameter to false
         }
     }
-    
-
     private void FixedUpdate()
     {
-        MovePlayer();
+        if(onDesesperation)
+        {
+            desesperation = -1;
+        }
+        else
+        {
+            desesperation = 1;
+        }
+        MovePlayer(desesperation);
     }
-
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -141,7 +145,7 @@ public class Player : MonoBehaviour
 
 
  
-    private void MovePlayer()
+    private void MovePlayer(int desesperation)
     {
         
         // calculate movement direction
@@ -150,7 +154,7 @@ public class Player : MonoBehaviour
         // on ground
         if (isGrounded)
         { 
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce((desesperation) * (moveDirection.normalized) * moveSpeed * 10f, ForceMode.Force);
         }
         // in air
         else if (!isGrounded)
