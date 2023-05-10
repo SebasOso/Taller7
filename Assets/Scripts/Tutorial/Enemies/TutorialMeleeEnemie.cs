@@ -48,6 +48,7 @@ public class TutorialMeleeEnemie : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             TutorialLife.Instance.HurtPlayer(meleeDamage);
+            TutorialMovement.Instance.onDesesperation = true;
             canDamage = false;
             StartCoroutine(DamageDelay());
         }

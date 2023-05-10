@@ -13,6 +13,7 @@ public class UITutorialManager : MonoBehaviour
     [SerializeField] public GameObject meleeEnemy;
     [SerializeField] public GameObject rangedEnemy;
     [SerializeField] public GameObject pause;
+    [SerializeField] public bool isMeleeSpawned;
     public bool mouse = false;
     public bool movement = false;
     public bool enemyPrepare = false;
@@ -83,6 +84,7 @@ public class UITutorialManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         meleeEnemy.SetActive(true);
+        isMeleeSpawned = true;
     }
     public void RangedEnemy()
     {

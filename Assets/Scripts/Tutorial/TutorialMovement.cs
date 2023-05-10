@@ -55,6 +55,8 @@ public class TutorialMovement : MonoBehaviour
     private float breakerCount;
     public float idlebreakerTime;
     public GameObject personajeanim;
+    [SerializeField] private float desesperation;
+    public bool onDesesperation;
     public static TutorialMovement Instance { get; private set; }
     private void Awake()
     {
@@ -115,7 +117,15 @@ public class TutorialMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if(onDesesperation)
+        {
+            desesperation = -1;
+        }
+        else
+        {
+            desesperation = 1;
+        }
+        MovePlayer(desesperation);
     }
 
     private void MyInput()
@@ -124,14 +134,14 @@ public class TutorialMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
     }
 
-    private void MovePlayer()
+    private void MovePlayer(float desesperation)
     {
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // on ground
         if (isGrounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce((desesperation) * (moveDirection.normalized) * moveSpeed * 10f, ForceMode.Force);
 
         // in air
         else if (!isGrounded)
