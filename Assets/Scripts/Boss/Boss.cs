@@ -13,7 +13,6 @@ public class Boss : MonoBehaviour
     public float degree;
     public GameObject target;
     public bool isAttacking;
-    public BossRange range;
     public float speed;
     public GameObject[] hit;
     public int hitSelect;
@@ -81,15 +80,13 @@ public class Boss : MonoBehaviour
                     case 0:
                         //FlameThrower
                         animator.SetBool("attack", true);
-                        animator.SetFloat("skills", 0);
+                        animator.SetFloat("skills", 0.8f);
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-                        range.GetComponent<CapsuleCollider>().enabled = false;
                         break;
                     case 1:
                         //ThrowObject
                         animator.SetBool("attack", true);
-                        animator.SetFloat("skills", 0);
-                        range.GetComponent<CapsuleCollider>().enabled = false;
+                        animator.SetFloat("skills", 1);
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 0.5f);
                         break;
                 }
@@ -101,7 +98,6 @@ public class Boss : MonoBehaviour
         rutine = 0;
         animator.SetBool("attack", false);
         isAttacking = false;
-        range.GetComponent<CapsuleCollider>().enabled = false;
         flamethrower = false;
     }
     public void ColliderWeaponTrue()
