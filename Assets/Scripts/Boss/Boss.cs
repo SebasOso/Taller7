@@ -17,6 +17,7 @@ public class Boss : MonoBehaviour
     public GameObject[] hit;
     public int hitSelect;
     public int rangeStart = 20;
+    public bool canAttack = false;
 
     [Header("Base")]
     public int fase = 1;
@@ -51,13 +52,13 @@ public class Boss : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = minHealth / maxHealth;
-        if(minHealth > 0)
+        if (minHealth > 0)
         {
             Alive();
         }
         else
         {
-            if(!isDead)
+            if (!isDead)
             {
                 animator.SetTrigger("dead");
                 battleMusic.enabled = false;
@@ -164,10 +165,13 @@ public class Boss : MonoBehaviour
     }
     public void Alive()
     {
-        Behavior();
-        if(flamethrower)
+        if (canAttack)
         {
-            FlameThrower();
+            Behavior();
+            if (flamethrower)
+            {
+                FlameThrower();
+            }
         }
     }
 }

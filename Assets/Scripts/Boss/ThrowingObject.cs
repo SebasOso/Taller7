@@ -6,7 +6,7 @@ public class ThrowingObject : MonoBehaviour
 {
     public float timekeeper;
     [SerializeField] private float velocity;
-
+    public int secondsLife;
     void Start()
     {
         
@@ -20,7 +20,7 @@ public class ThrowingObject : MonoBehaviour
     private void Movement()
     {
         timekeeper += 1 * Time.deltaTime;
-        if (timekeeper > 3)
+        if (timekeeper > secondsLife)
         {
             gameObject.SetActive(false);
             timekeeper = 0;
