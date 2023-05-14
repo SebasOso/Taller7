@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timekeeper: 0
-  velocity: 0
+  velocity: 16
 --- !u!114 &5201105753719223917
 MonoBehaviour:
   m_ObjectHideFlags: 0

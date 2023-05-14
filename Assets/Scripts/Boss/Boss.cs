@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     [Header("General")]
-    public int rutine;
+    public int rutine = 1;
     public float timekeeper;
     public Animator animator;
     public Quaternion angle;
@@ -16,6 +16,7 @@ public class Boss : MonoBehaviour
     public float speed;
     public GameObject[] hit;
     public int hitSelect;
+    public int rangeStart = 20;
 
     [Header("Base")]
     public int fase = 1;
@@ -66,7 +67,7 @@ public class Boss : MonoBehaviour
     }
     public void Behavior()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) < 15)
+        if (Vector3.Distance(transform.position, target.transform.position) < rangeStart)
         {
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
@@ -95,7 +96,7 @@ public class Boss : MonoBehaviour
     }
     public void FinalAni()
     {
-        rutine = 0;
+        //rutine = 1;
         animator.SetBool("attack", false);
         isAttacking = false;
         flamethrower = false;
