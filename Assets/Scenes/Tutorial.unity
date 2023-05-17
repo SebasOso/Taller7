@@ -10842,7 +10842,7 @@ MonoBehaviour:
   attackRange: 2.5
   playerDamage: 25
   attackSpeed: 0.9
-  meleeSign: {fileID: 1338796084}
+  meleeSign: {fileID: 1338796085}
   anim: {fileID: 1182477320}
 --- !u!1 &354763651
 GameObject:

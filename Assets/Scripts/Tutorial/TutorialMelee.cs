@@ -1,6 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialMelee : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class TutorialMelee : MonoBehaviour
     [SerializeField] private float playerDamage;
     [SerializeField] private float attackSpeed;
     private float lastAttackTime = -Mathf.Infinity;
-    [SerializeField] GameObject meleeSign;
+    [SerializeField] Image meleeSign;
     private bool isAttacking = false;
     [SerializeField] private Animator anim;
     // Update is called once per frame
@@ -19,12 +21,21 @@ public class TutorialMelee : MonoBehaviour
             isAttacking = true;
             Attack();
             lastAttackTime = Time.time;
+            Vector2 mousePosition = Input.mousePosition;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                meleeSign.canvas.transform as RectTransform,
+                mousePosition,
+                meleeSign.canvas.worldCamera,
+                out Vector2 localPoint);
+
+            meleeSign.rectTransform.localPosition = localPoint;
+            meleeSign.gameObject.SetActive(true);
         }
         if (Input.GetMouseButtonUp(0))
         {
             isAttacking = false;
+            meleeSign.gameObject.SetActive(false);
         }
-        meleeSign.SetActive(isAttacking);
     }
     private void Attack()
     {

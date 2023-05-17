@@ -23980,7 +23980,7 @@ PrefabInstance:
     - target: {fileID: 1306655869825325400, guid: 3ed9edac504a8f24895a583bdd4d9fba, type: 3}
       propertyPath: meleeSign
       value: 
-      objectReference: {fileID: 1299946727}
+      objectReference: {fileID: 1299946729}
     - target: {fileID: 1306655869825325401, guid: 3ed9edac504a8f24895a583bdd4d9fba, type: 3}
       propertyPath: backHealth
       value: 
@@ -34294,11 +34294,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1169550593954096430, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016468093
+      value: 0.00000001646809
       objectReference: {fileID: 0}
     - target: {fileID: 1169550593954096430, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000049861373
+      value: -0.000000004986136
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595446188140, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LookAt
