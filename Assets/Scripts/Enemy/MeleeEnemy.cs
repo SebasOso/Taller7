@@ -19,6 +19,7 @@ public class MeleeEnemy : MonoBehaviour
     public UnityEvent OnDesesperation;
     [SerializeField] public bool isDesesperation;
     [SerializeField] private float effectDuration = 3.0f;
+    [SerializeField] private float maxDegreeDelta = 2.0f;
     public static MeleeEnemy Instance { get; private set; }
     private void Awake()
     {
@@ -45,15 +46,20 @@ public class MeleeEnemy : MonoBehaviour
     }
     private void EnemyMovement()
     {
-            if (Vector3.Distance(transform.position, player.position) > stop_distance)
-            {
-                Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            }
-            else if (Vector3.Distance(transform.position, player.position) < stop_distance && Vector3.Distance(transform.position, player.position) > retreat_distance)
-            {
-                transform.position = this.transform.position;
-            }
+        var lookPos = player.transform.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        if (Vector3.Distance(transform.position, player.position) > stop_distance)
+        {
+            Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreeDelta);
+        }
+        else if (Vector3.Distance(transform.position, player.position) < stop_distance && Vector3.Distance(transform.position, player.position) > retreat_distance)
+        {
+            transform.position = this.transform.position;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreeDelta);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
