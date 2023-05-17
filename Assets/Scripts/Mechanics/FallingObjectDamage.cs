@@ -2,59 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class objetocaedaño : MonoBehaviour
+public class FallingObjectDamage : MonoBehaviour
 {
-    public int dañoalpersonaje = 1;
+    public int playerDamage = 1;
     public LifeSystem player;
- private float anchoArea;
- private float altoArea;
-
-
-
-    public float velocidadGravedad=9.8f;
-
-  
+    private float areaWidth;
+    private float areaHeight;
+    public float gravityVelocity = 9.8f;
     private void Start()
     {
-        anchoArea = this.transform.localScale.x;
-        altoArea = this.transform.localScale.z;
-        Physics.gravity = new Vector3(0, -velocidadGravedad, 0);
+        areaWidth = this.transform.localScale.x;
+        areaHeight = this.transform.localScale.z;
+        Physics.gravity = new Vector3(0, -gravityVelocity, 0);
     }
-    void FixedUpdate()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.gameObject.tag != "spawner")
         {
-           
-
             if (collision.transform.gameObject.tag == "Player")
             {
-                player.HurtPlayer(dañoalpersonaje);
+                player.HurtPlayer(playerDamage);
                 Destroy(this.gameObject);
             }
            
         }
-        
-        
-       
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.gameObject.tag=="Destruir")
         {
             Destroy(this.gameObject);
         }
-    }
-    void Update()
-    {
-
-    
-        
     }
 }
 
