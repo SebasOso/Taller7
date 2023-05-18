@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalCinematic.unity
     guid: ca74aafce3706d640897abd0a546c09f
+  - enabled: 1
+    path: Assets/Scenes/Level02Cinematic.unity
+    guid: f8853d2f0bb245642b6e7952c2f3c421
+  - enabled: 1
+    path: Assets/Scenes/LVL 2.unity
+    guid: 070f2b99986af4740a801fd10530b8a0
   m_configObjects: {}

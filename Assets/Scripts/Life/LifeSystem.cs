@@ -247,6 +247,11 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
         {
             Vector3 lastCheckPosition = data.checkPositions[data.checkPositions.Count - 1];
             this.transform.position = lastCheckPosition;
+            if (data.collectablesIndexes[0] == 1)
+            {
+                lastCheckPosition = new Vector3(-28, 0, -42);
+                this.transform.position = lastCheckPosition;
+            }
         }
     }
 

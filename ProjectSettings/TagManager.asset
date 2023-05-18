@@ -17,6 +17,7 @@ TagManager:
   - Ground
   - Destruir
   - caido
+  - Folder
   layers:
   - Default
   - TransparentFX

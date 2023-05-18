@@ -7,10 +7,14 @@ using UnityEngine;
 public class Guides : MonoBehaviour
 {
     [SerializeField] List<TextMeshProUGUI> counterGuides;
-    private int counter = 0;
+    public int counter = 0;
     public GameObject[] checkpoints; // Array de checkpoints
     private int currentCheckpoint = 0; // Índice del checkpoint actual
-
+    public static Guides Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         // Apagar todos los checkpoints excepto el primero
