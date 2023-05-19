@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TutorialRangeEnemy : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class TutorialRangeEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerMask;
     private TutorialEnemyRangeHealth health;
     [SerializeField] private Transform player;
+    [SerializeField] private UnityEvent doThis;
+    [SerializeField] private UnityEvent doThat;
     void Start()
     {
         health = GetComponent<TutorialEnemyRangeHealth>();
@@ -57,6 +60,7 @@ public class TutorialRangeEnemy : MonoBehaviour
     {
         if (timeBetweenShots <= 0 && TutorialMovement.Instance.isMoving)
         {
+            doThis.Invoke();
             Vector3 position = transform.position;
             EnemyBulletPool.Instance.Get().transform.position = this.transform.position;
             timeBetweenShots = startTimeBetweenShots;
@@ -70,6 +74,7 @@ public class TutorialRangeEnemy : MonoBehaviour
     {
         if (!TutorialMovement.Instance.isMoving && canTakeDamage)
         {
+            doThat.Invoke();
             health.TakeDamage(TutorialMovement.Instance.stayDamage);
             canTakeDamage = false;
             StartCoroutine(ResetCanTakeDamage());
