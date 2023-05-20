@@ -15,6 +15,8 @@ public class TutorialMeleeEnemie : MonoBehaviour
     private EnemyHealth health;
     private bool canDamage;
     [SerializeField] private Transform player;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float maxDegreeDelta = 2.0f;
     void Start()
     {
         health = GetComponent<EnemyHealth>();
@@ -33,14 +35,21 @@ public class TutorialMeleeEnemie : MonoBehaviour
 
     private void EnemyMovement()
     {
+        var lookPos = player.transform.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
         if (Vector3.Distance(transform.position, player.position) > stop_distance)
         {
             Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreeDelta);
+            animator.SetBool("isMoving", true);
         }
         else if (Vector3.Distance(transform.position, player.position) < stop_distance && Vector3.Distance(transform.position, player.position) > retreat_distance)
         {
             transform.position = this.transform.position;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreeDelta);
+            animator.SetBool("isMoving", false);
         }
     }
     private void OnTriggerEnter(Collider other)

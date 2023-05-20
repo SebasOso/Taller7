@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TutorialEnemyHealth : MonoBehaviour
@@ -8,6 +9,7 @@ public class TutorialEnemyHealth : MonoBehaviour
     [SerializeField] private GameObject healthBar;
     private Renderer healthBarMaterial;
     public TutorialEnemyHealth Instance { get; private set; }
+    [SerializeField] private Animator animator;
     private void Awake()
     {
         Instance = this;
@@ -37,11 +39,18 @@ public class TutorialEnemyHealth : MonoBehaviour
         {
             TutorialMovement.Instance.enemyIsDead = true;
             TutorialEvents.Instance.meleeEnemyIsDead = true;
-            gameObject.SetActive(false);
+            StartCoroutine(Wait());
         }
     }
     public void TakeDamage(float damage)
     {
         health -= damage;
+    }
+    private IEnumerator Wait()
+    {
+        animator.SetBool("isMoving", false);
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
     }
 }

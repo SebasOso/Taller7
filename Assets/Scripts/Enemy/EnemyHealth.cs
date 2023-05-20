@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public float health = 100f;
     [SerializeField] private GameObject healthBar;
     private Renderer healthBarMaterial;
+    [SerializeField] private Animator animator;
+
     public EnemyHealth instance { get; private set; }
     private void Awake()
     {
@@ -38,11 +40,18 @@ public class EnemyHealth : MonoBehaviour
         {
             Player.Instance.enemyIsDead = true;
             MeleeEnemy.Instance.isDesesperation = false;
-            gameObject.SetActive(false);
+            StartCoroutine(Wait());
         }
     }
     public void TakeDamage(float damage)
     {
         health -= damage;
+    }
+    private IEnumerator Wait()
+    {
+        animator.SetBool("isMoving", false);
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
     }
 }
