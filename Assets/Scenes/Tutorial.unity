@@ -42763,7 +42763,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666901501}
-  m_LocalRotation: {x: 0.2529324, y: 0.000000016646899, z: -0.000000004352051, w: 0.967484}
+  m_LocalRotation: {x: 0.2529324, y: -0.000000016646899, z: 0.000000004352051, w: 0.967484}
   m_LocalPosition: {x: 0, y: 6.1538463, z: -9.230769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44974,7 +44974,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755065714}
-  m_LocalRotation: {x: 0.25293237, y: 0.0000000083234495, z: -0.0000000021760251, w: 0.967484}
+  m_LocalRotation: {x: 0.25293237, y: -0.0000000083234495, z: 0.0000000021760251, w: 0.967484}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -52015,7 +52015,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   player: {fileID: 353167518}
-  animator: {fileID: 0}
+  animator: {fileID: 1118309365}
   maxDegreeDelta: 2
 --- !u!114 &4183003718122751737
 MonoBehaviour:
@@ -52031,7 +52031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   healthBar: {fileID: 492192222936262078}
-  animator: {fileID: 0}
+  animator: {fileID: 1118309365}
 --- !u!114 &4722281072021507362
 MonoBehaviour:
   m_ObjectHideFlags: 0
