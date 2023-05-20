@@ -15981,7 +15981,7 @@ MonoBehaviour:
   animator: {fileID: 344971925}
   angle: {x: 0, y: 0, z: 0, w: 0}
   degree: 0
-  target: {fileID: 0}
+  target: {fileID: 597020729}
   isAttacking: 0
   speed: 2
   hit: []
@@ -24655,6 +24655,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 151a108b9d4d40448bd68c7552c1abd2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ed9edac504a8f24895a583bdd4d9fba, type: 3}
+--- !u!1 &597020729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1306655869265601490, guid: 3ed9edac504a8f24895a583bdd4d9fba, type: 3}
+  m_PrefabInstance: {fileID: 597020728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &603236125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1196681644990619762, guid: ac1e1c139bdb52b4ebaebcea93020571, type: 3}
@@ -34786,11 +34791,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1169550593954096430, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001646809
+      value: -0.000000016468093
       objectReference: {fileID: 0}
     - target: {fileID: 1169550593954096430, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004986136
+      value: 0.0000000049861373
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595446188140, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LookAt
@@ -34822,11 +34827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595513553583, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016799651
+      value: 0.000000016799653
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595513553583, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000037190429
+      value: -0.0000000037190437
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595546039285, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_Name
