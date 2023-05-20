@@ -56,7 +56,6 @@ public class MeleeEnemy : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreeDelta);
             animator.SetBool("isMoving", true);
-            animator.SetTrigger("attack");
         }
         else if (Vector3.Distance(transform.position, player.position) < stop_distance && Vector3.Distance(transform.position, player.position) > retreat_distance)
         {
