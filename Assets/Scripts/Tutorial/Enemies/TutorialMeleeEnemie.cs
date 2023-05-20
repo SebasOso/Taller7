@@ -56,6 +56,8 @@ public class TutorialMeleeEnemie : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            animator.SetTrigger("attack");
+            animator.SetBool("isMoving", false);
             TutorialLife.Instance.HurtPlayer(meleeDamage);
             TutorialMovement.Instance.onDesesperation = true;
             canDamage = false;

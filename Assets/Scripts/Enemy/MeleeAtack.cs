@@ -39,7 +39,7 @@ public class MeleeAtack : MonoBehaviour
     }
     private void Attack()
     {
-    anim.SetTrigger("attack");
+        anim.SetTrigger("attack");
         Collider[] enemiesCollider = Physics.OverlapSphere(transform.position, attackRange);
         foreach (Collider enemies in enemiesCollider)
         {
