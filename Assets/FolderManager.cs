@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class FolderManager : MonoBehaviour
 {
+    [SerializeField] private float damageToBoss = 100f;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            this.gameObject.SetActive(false);   
+            this.gameObject.SetActive(false);
+            Boss.Instance.HurtBoss(damageToBoss);
         }
     }
 }

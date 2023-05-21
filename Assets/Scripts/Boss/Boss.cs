@@ -42,7 +42,12 @@ public class Boss : MonoBehaviour
     public GameObject objectToThrow;
     public GameObject pointFrom;
     public List<GameObject> objectPool = new List<GameObject>();
-    /// </ThrowingObjects>
+    public static Boss Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -170,5 +175,12 @@ public class Boss : MonoBehaviour
             {
                 FlameThrower();
             }
+    }
+    public void HurtBoss(float damage)
+    {
+        if (minHealth > 0)
+        {
+            minHealth -= damage;
+        }
     }
 }

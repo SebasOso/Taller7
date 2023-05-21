@@ -5,7 +5,6 @@ using UnityEngine;
 public class FallingObjectDamage : MonoBehaviour
 {
     public int playerDamage = 1;
-    public LifeSystem player;
     private float areaWidth;
     private float areaHeight;
     public float gravityVelocity = 9.8f;
@@ -21,7 +20,8 @@ public class FallingObjectDamage : MonoBehaviour
         {
             if (collision.transform.gameObject.tag == "Player")
             {
-                player.HurtPlayer(playerDamage);
+                Debug.Log("TE PEGUEEEEEE");
+                LifeSystem.Instance.HurtPlayer(playerDamage);
                 Destroy(this.gameObject);
             }
            
