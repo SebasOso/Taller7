@@ -17,7 +17,7 @@ public class Boss : MonoBehaviour
     public GameObject[] hit;
     public int hitSelect;
     public int rangeStart = 20;
-    public bool canAttack = false;
+    //public bool canAttack = false;
 
     [Header("Base")]
     public int fase = 1;
@@ -165,13 +165,10 @@ public class Boss : MonoBehaviour
     }
     public void Alive()
     {
-        if (canAttack)
-        {
             Behavior();
             if (flamethrower)
             {
                 FlameThrower();
             }
-        }
     }
 }

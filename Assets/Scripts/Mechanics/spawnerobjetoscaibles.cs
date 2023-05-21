@@ -62,7 +62,7 @@ public class spawnerobjetoscaibles : MonoBehaviour
 
                 if (objeto.gameObject.tag == "Player")
                 {
-
+                    LifeSystem.Instance.HurtPlayer(1);
 
                     if (objetosCreados.Count < cantidadMaxima)
                     {
