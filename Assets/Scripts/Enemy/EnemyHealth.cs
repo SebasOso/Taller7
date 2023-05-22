@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject healthBar;
     private Renderer healthBarMaterial;
     [SerializeField] private Animator animator;
+    [SerializeField] UnityEvent DoWhenDGMTaken;
 
     public EnemyHealth instance { get; private set; }
     private void Awake()
@@ -46,6 +48,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        DoWhenDGMTaken.Invoke();
     }
     private IEnumerator Wait()
     {
