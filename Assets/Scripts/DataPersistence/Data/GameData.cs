@@ -12,6 +12,7 @@ public class GameData
     public float musicVolume;
     public int keyCollected;
     public int folderCollected;
+    public int firstTimeLvl2;
     public GameData() 
     {
         collectablesIndexes = new int[3] {0,0,0};
@@ -21,5 +22,6 @@ public class GameData
         soundVolume = 1;
         keyCollected = 0;
         folderCollected = 0;
+        firstTimeLvl2 = 0;
     }
 }
