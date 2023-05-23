@@ -10,7 +10,8 @@ public class TutorialEnemyBullet : MonoBehaviour
     private Vector3 target;
     private TutorialMovement playerMovement; // Referencia al script PlayerMovement
     private bool hasPlayerMoved; // Flag que indica si el jugador se ha movido
-
+    public float yDelay = 2.0f;
+    [SerializeField] private float maxDegreesDelta = 10;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -26,15 +27,18 @@ public class TutorialEnemyBullet : MonoBehaviour
 
     private void Update()
     {
+        var lookPos = player.transform.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
         if (hasPlayerMoved) // Si el jugador se ha movido
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
-            target = new Vector3(player.position.x, player.position.y, player.position.z);
+            target = new Vector3(player.position.x, player.position.y + yDelay, player.position.z);
             hasPlayerMoved = false; // Reinicia el flag de movimiento del jugador
         }
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreesDelta);
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer < 0.1f)
         {

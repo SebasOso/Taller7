@@ -52,15 +52,15 @@ public class TutorialMeleeEnemie : MonoBehaviour
             animator.SetBool("isMoving", false);
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
             animator.SetTrigger("attack");
             animator.SetBool("isMoving", false);
             TutorialLife.Instance.HurtPlayer(meleeDamage);
-            TutorialMovement.Instance.onDesesperation = true;
             canDamage = false;
+            TutorialMovement.Instance.onDesesperation = true;
             StartCoroutine(DamageDelay());
         }
     }
