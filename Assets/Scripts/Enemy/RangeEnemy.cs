@@ -21,7 +21,7 @@ public class RangeEnemy : MonoBehaviour
     [SerializeField] private UnityEvent doThis;
     [SerializeField] private UnityEvent doThat;
     [SerializeField] private float maxDegreesDelta;
-
+    [SerializeField] private Animator animator;
 
     void Start()
     {
@@ -52,17 +52,20 @@ public class RangeEnemy : MonoBehaviour
             Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreesDelta);
+            animator.SetBool("isMoving", true);
         }
         else if (Vector3.Distance(transform.position, player.position) < stop_distance && Vector3.Distance(transform.position, player.position) > retreat_distance)
         {
             transform.position = this.transform.position;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreesDelta);
+            animator.SetBool("isMoving", false);
         }
         else if (Vector3.Distance(transform.position, player.position) <= retreat_distance)
         {
             Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, -speed * Time.deltaTime);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, maxDegreesDelta);
+            animator.SetBool("isMoving", true);
         }
     }
 
@@ -74,6 +77,7 @@ public class RangeEnemy : MonoBehaviour
             EnemyBulletPool.Instance.Get().transform.position = this.transform.position;
             timeBetweenShots = startTimeBetweenShots;
             doThis.Invoke();
+            animator.SetTrigger("attack");
         }
         else
         {
