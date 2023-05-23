@@ -64,9 +64,9 @@ public class MeleeEnemy : MonoBehaviour
             animator.SetBool("isMoving", false);
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if(collision.collider.CompareTag("Player"))
         {
             animator.SetTrigger("attack");
             animator.SetBool("isMoving", false);
