@@ -12,9 +12,11 @@ public class Configurations : MonoBehaviour
     [SerializeField] private List<GameObject> otherMenuOptions;
     [SerializeField] private GameObject defaultMenuOption;
     [SerializeField] private bool menuOpened = false;
-    private bool isPaused;
+    public static Configurations Instance { get; private set; } 
+    public bool isPaused;
     private void Awake()
     {
+        Instance = this;
         Application.targetFrameRate = 60;
     }
     private void Start()
