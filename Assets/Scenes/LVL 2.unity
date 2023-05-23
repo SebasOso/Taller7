@@ -20032,11 +20032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1306655870709184802, guid: 3ed9edac504a8f24895a583bdd4d9fba, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.019445386
+      value: 0.019445352
       objectReference: {fileID: 0}
     - target: {fileID: 1306655870709184802, guid: 3ed9edac504a8f24895a583bdd4d9fba, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.005083668
+      value: 0.0050836597
       objectReference: {fileID: 0}
     - target: {fileID: 1306655870709184802, guid: 3ed9edac504a8f24895a583bdd4d9fba, type: 3}
       propertyPath: m_LocalRotation.y
@@ -30406,11 +30406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595446188141, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000083234495
+      value: -0.0000000083234495
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595446188141, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000021760251
+      value: 0.0000000021760251
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595513553583, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30422,11 +30422,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595513553583, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016799653
+      value: -0.000000016799651
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595513553583, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000037190437
+      value: 0.0000000037190429
       objectReference: {fileID: 0}
     - target: {fileID: 1169550595546039285, guid: 9035eb143e123184f860e9c6274bedaf, type: 3}
       propertyPath: m_Name
@@ -43827,6 +43827,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   maxDegreesDelta: 2
+  animator: {fileID: 2042431973}
 --- !u!136 &902954949
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -46814,6 +46815,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   maxDegreesDelta: 2
+  animator: {fileID: 1116858213}
 --- !u!136 &1023194935
 CapsuleCollider:
   m_ObjectHideFlags: 0

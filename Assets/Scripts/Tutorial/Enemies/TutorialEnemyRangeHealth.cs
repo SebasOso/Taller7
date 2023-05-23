@@ -7,6 +7,7 @@ public class TutorialEnemyRangeHealth : MonoBehaviour
     public float health = 100f;
     [SerializeField] private GameObject healthBar;
     private Renderer healthBarMaterial;
+    [SerializeField] private Animator animator;
     public TutorialEnemyRangeHealth Instance { get; private set; }
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class TutorialEnemyRangeHealth : MonoBehaviour
         }
         else
         {
+            animator.SetTrigger("dead");
             TutorialEvents.Instance.enemyRangeIsDead = true;
             gameObject.SetActive(false);
         }

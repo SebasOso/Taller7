@@ -49,8 +49,9 @@ public class EnemyHealth : MonoBehaviour
     }
     private IEnumerator Wait()
     {
+
+        animator.SetTrigger("dead");
         animator.SetBool("isMoving", false);
-        animator.SetBool("isDead", true);
         yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
     }
