@@ -185,11 +185,10 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private void Die()
     {
         isDied = true;
-        
         SetDefault();
         DataPersistenceManager.instance.SaveGame();
-     
-        SceneManager.LoadSceneAsync("Level01");
+        DataPersistenceManager.instance.LoadGame();
+        ReloadCurrentScene();
     }
 
   
@@ -255,6 +254,10 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
                 this.transform.position = lastCheckPosition;
             }
         }
+        if(noLifes == true)
+        {
+            data.checkPositions.Clear();
+        }
     }
 
     public void SaveData(GameData data)
@@ -271,5 +274,10 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
         hasDied = true;
         yield return new WaitForSeconds(8);
         hasDied = false;
+    }
+    private void ReloadCurrentScene()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
