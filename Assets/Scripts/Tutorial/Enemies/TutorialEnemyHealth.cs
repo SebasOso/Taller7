@@ -44,6 +44,7 @@ public class TutorialEnemyHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        animator.SetTrigger("hurt");
         health -= damage;
     }
     private IEnumerator Wait()

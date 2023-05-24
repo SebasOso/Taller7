@@ -94,6 +94,7 @@ public class TutorialRangeEnemy : MonoBehaviour
     }
     private IEnumerator ResetCanTakeDamage()
     {
+        animator.SetBool("isHurting", false);
         yield return new WaitForSeconds(damageDelay);
         canTakeDamage = true;
     }

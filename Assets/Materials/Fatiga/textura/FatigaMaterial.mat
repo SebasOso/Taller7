@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FatigaMaterial
-  m_Shader: {fileID: 4800000, guid: 35fa84ef299b7a64b9cc12a4c8d95909, type: 3}
+  m_Shader: {fileID: 4800000, guid: 317bd790989532a41b9511454ee2121a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _METALLICGLOSSMAP

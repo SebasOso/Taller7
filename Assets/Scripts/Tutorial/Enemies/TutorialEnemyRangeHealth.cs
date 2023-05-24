@@ -43,6 +43,7 @@ public class TutorialEnemyRangeHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        animator.SetTrigger("hurt");
         health -= damage;
     }
 }

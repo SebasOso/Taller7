@@ -47,12 +47,12 @@ public class EnemyHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        animator.SetTrigger("hurt");
         health -= damage;
         DoWhenDGMTaken.Invoke();
     }
     private IEnumerator Wait()
     {
-
         animator.SetTrigger("dead");
         animator.SetBool("isMoving", false);
         yield return new WaitForSeconds(3);
