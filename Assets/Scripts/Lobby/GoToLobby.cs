@@ -9,7 +9,7 @@ public class GoToLobby : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Lobby");
+            SceneManager.LoadScene("FinalCinematic");
         }
     }
 }

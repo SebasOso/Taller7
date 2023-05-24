@@ -24,7 +24,7 @@ public class GoToFinalScene : MonoBehaviour, IDataPersistence
         {
             levelCompleted = true;
             DataPersistenceManager.instance.SaveGame();
-            SceneManager.LoadScene("FinalCinematic");  
+            SceneManager.LoadScene("Lobby");  
         }
     }
 }
