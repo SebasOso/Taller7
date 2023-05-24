@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
+    public UnityEvent DoOnFlameThrow;
+    public UnityEvent DoOnFlameAttack;// 
+
     [Header("General")]
     public int rutine = 1;
     public float timekeeper;
@@ -125,7 +129,7 @@ public class Boss : MonoBehaviour
                 return flamePool[i];
             }
         }
-        GameObject obj = Instantiate(fire, head.transform.position, head.transform.rotation) as GameObject;
+        GameObject obj = Instantiate(fire, head.transform.position, head.transform.rotation) as GameObject;      
         flamePool.Add(obj);
         return obj;
     }
@@ -135,6 +139,7 @@ public class Boss : MonoBehaviour
         if (timekeeper2 > 0.1f)
         {
             GameObject obj = GetBullet();
+            DoOnFlameAttack.Invoke();
             obj.transform.position = head.transform.position;
             obj.transform.rotation = head.transform.rotation;
             timekeeper2 = 0;
@@ -159,12 +164,14 @@ public class Boss : MonoBehaviour
             }
         }
         GameObject obj = Instantiate(objectToThrow, pointFrom.transform.position, pointFrom.transform.rotation) as GameObject;
+        
         objectPool.Add(obj);
         return obj;
     }
     public void ThrowingObject()
     {
         GameObject obj = GetThrowingObject();
+        DoOnFlameThrow.Invoke();
         obj.transform.position = pointFrom.transform.position;
         obj.transform.rotation = pointFrom.transform.rotation;
     }

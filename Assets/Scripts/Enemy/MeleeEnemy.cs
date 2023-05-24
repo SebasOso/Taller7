@@ -14,7 +14,7 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private bool playerDetected = false;
     [SerializeField] private LayerMask playerMask;
     private EnemyHealth health;
-    private bool canDamage;
+    private bool canDamage = true;
     [SerializeField]private Transform player;
     public UnityEvent OnDesesperation;
     [SerializeField] public bool isDesesperation;
@@ -66,14 +66,15 @@ public class MeleeEnemy : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && canDamage == true)
         {
             animator.SetTrigger("attack");
             animator.SetBool("isMoving", false);
             LifeSystem.Instance.HurtPlayer(meleeDamage);
-            canDamage = false;
+            
             Player.Instance.onDesesperation = true;
             StartCoroutine(DamageDelay());
+            canDamage = false;
         }
     }
 
