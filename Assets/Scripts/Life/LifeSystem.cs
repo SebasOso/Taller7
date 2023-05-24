@@ -46,6 +46,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     public Animator anim;
     public Player player;
     private bool transition;
+    public bool hasDied; 
     private void Awake()
     {
         //SaveSystem.Instance.Load();
@@ -78,6 +79,7 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
                 {
                     transition = true;
                     RestLifes();
+                    StartCoroutine(PlayerHasDied());
                 }
             }
         }
@@ -183,11 +185,10 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     private void Die()
     {
         isDied = true;
-        
         SetDefault();
         DataPersistenceManager.instance.SaveGame();
-     
-        SceneManager.LoadSceneAsync("Level01");
+        DataPersistenceManager.instance.LoadGame();
+        ReloadCurrentScene();
     }
 
   
@@ -253,6 +254,10 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
                 this.transform.position = lastCheckPosition;
             }
         }
+        if(noLifes == true)
+        {
+            data.checkPositions.Clear();
+        }
     }
 
     public void SaveData(GameData data)
@@ -263,5 +268,16 @@ public class LifeSystem : MonoBehaviour, IDataPersistence
     {
         this.playerLifes = 5;
 
+    }
+    private IEnumerator PlayerHasDied()
+    {
+        hasDied = true;
+        yield return new WaitForSeconds(8);
+        hasDied = false;
+    }
+    private void ReloadCurrentScene()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
