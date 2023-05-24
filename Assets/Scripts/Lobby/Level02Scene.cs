@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Level02Scene : MonoBehaviour, IDataPersistence
 {
-    private int level2 = 0; 
+    private int level2; 
     public void LoadData(GameData data)
     {
+        level2 = data.firstTimeLvl2;
     }
 
     public void SaveData(GameData data)
@@ -19,9 +20,9 @@ public class Level02Scene : MonoBehaviour, IDataPersistence
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Level02Cinematic");
             level2 = 1;
             DataPersistenceManager.instance.SaveGame();
+            SceneManager.LoadScene("Level02Cinematic");
         }
     }
 }
