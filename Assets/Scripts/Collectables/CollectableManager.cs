@@ -6,7 +6,7 @@ public class CollectableManager : MonoBehaviour, IDataPersistence
 {
     public int[] collectablesIndexes;
     public List<GameObject> collectables;
-
+    [SerializeField] private List<GameObject> tps;
     public void LoadData(GameData data)
     {
         this.collectablesIndexes = data.collectablesIndexes;
@@ -18,6 +18,7 @@ public class CollectableManager : MonoBehaviour, IDataPersistence
     private void Update()
     {
         UpdateCollectables();
+        UpdateTps();
     }
     private void UpdateCollectables()
     {
@@ -44,6 +45,17 @@ public class CollectableManager : MonoBehaviour, IDataPersistence
         else if (collectablesIndexes[2] == 0)
         {
             collectables[2].SetActive(false);
+        }
+    }
+    private void UpdateTps()
+    {
+        if (collectablesIndexes[0] == 1)
+        {
+            tps[0].SetActive(false);
+        }
+        if (collectablesIndexes[1] == 1)
+        {
+            tps[1].SetActive(false);
         }
     }
 }
