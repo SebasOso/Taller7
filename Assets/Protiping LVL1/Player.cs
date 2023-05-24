@@ -109,6 +109,10 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(LifeSystem.Instance.hasDied == true)
+        {
+            onDesesperation = false;
+        }
         if(onDesesperation)
         {
             desesperation = -1;
