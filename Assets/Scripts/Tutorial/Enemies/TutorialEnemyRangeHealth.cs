@@ -36,14 +36,20 @@ public class TutorialEnemyRangeHealth : MonoBehaviour
         }
         else
         {
-            animator.SetTrigger("dead");
             TutorialEvents.Instance.enemyRangeIsDead = true;
-            gameObject.SetActive(false);
+            StartCoroutine(Wait());
         }
     }
     public void TakeDamage(float damage)
     {
         animator.SetTrigger("hurt");
         health -= damage;
+    }
+    private IEnumerator Wait()
+    {
+        animator.SetTrigger("dead");
+        animator.SetBool("isMoving", false);
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
     }
 }

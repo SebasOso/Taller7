@@ -14317,8 +14317,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1252070316}
-  - component: {fileID: 1252070318}
   - component: {fileID: 1252070317}
+  - component: {fileID: 1252070319}
   m_Layer: 9
   m_Name: Player (1)
   m_TagString: Player
@@ -14362,7 +14362,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &1252070318
+--- !u!114 &1252070319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14371,14 +14371,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1252070315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c8e7fcf6184bf3489bea75e171214b9, type: 3}
+  m_Script: {fileID: 11500000, guid: eedf415139b853d419cea2965696cd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  stayDamage: 20
-  attackRange: 2
-  attackRadius: 0.5
-  enemyIsDead: 0
   moveSpeed: 7
   groundDrag: 7
   airMultiplier: 1
@@ -14392,8 +14387,8 @@ MonoBehaviour:
   orientation: {fileID: 1472025319}
   idlebreakerTime: 10
   canJump: 1
-  jumpForce: 14
-  doubleJumpForce: 10
+  jumpForce: 10
+  doubleJumpForce: 5
   jumpDelay: 0.25
   groundMask:
     serializedVersion: 2
@@ -14404,8 +14399,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   anim: {fileID: 701123700}
-  desesperation: 0
-  onDesesperation: 0
   personajeanim: {fileID: 701123692}
 --- !u!1001 &1261977369
 PrefabInstance:
